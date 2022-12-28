@@ -9,6 +9,10 @@
   .wrapper {
     width: 100%;
     padding: 20px;
+
+    @media screen and (max-width: 600px) {
+      padding: 10px;
+    }
     display: flex;
     align-items: center;
     justify-content: space-between;

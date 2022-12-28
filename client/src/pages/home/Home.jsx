@@ -14,9 +14,9 @@ const Home = ({ type }) => {
   return (
     <div className="home">
       <div className="AdminHomeContainer">
-
         {/* Navbar according to the type of user */}
         {(type === "Admin") ? (<AdminNavbar />) : (<Navbar />)}
+
         
         {/* widgets */}
         <div className="widgets">

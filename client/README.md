@@ -142,3 +142,6 @@ Routes for main side
 
 All specifications for dark mode
 
+#### `Form.scss`
+
+This contains css for all the forms present in the website except for the ones involved in events

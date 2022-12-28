@@ -27,7 +27,7 @@ const AdminNavbar = () => {
       <div className="wrapper">
 
         {/* Home and brand icon */}
-        <Link to="/">
+        <Link to="/admin">
           <p className=""><img src={process.env.PUBLIC_URL + "/Assets/brand.png"} height="60px" alt="" /></p>
         </Link>
 
