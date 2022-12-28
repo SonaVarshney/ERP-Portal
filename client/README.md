@@ -58,17 +58,87 @@ These are the four boxes on landing page
 
 ## Context
 
+### `AuthContext`
+
+Saves the details of the user in local storage when they are logged in 
+
+### `DarkModeContext`
+
+Sets and returns the current theme
+
+### `DarkModeReducer`
+
+Function to toggle the dark mode
+
 ## Hooks
+
+### `useFetch`
+
+It contains functions that are used to fetch the data based on the url provided to the function using axios
 
 ## Pages
 
+### `Event`
+
+### `Home`
+
+It loads home page for both admin and user side based on the type of prop passed to it
+
+### `List`
+
+It is the page which renders the data tables based on the props passed
+
+### `Login`
+
+Login page is redirects to different areas based on which side we are logging into
+
+### `Single`
+
+Single page displays all the details of the user
+
+### `Task`
+
+### `Update`
+
+### `User`
+
 ## Routes
+
+### `Admin Routes`
+
+Routes for admin side
+
+### `Main Routes`
+
+Routes for main side
 
 ## Source
 
+### `DataTable Source`
+
+* eventColumns - contains specifications of columns of events that need to be displayed
+
+* taskColumns - contains specifications of columns of tasks that need to be displayed
+
+* updateColumns - contains specifications of columns of updates that need to be displayed
+
+* userColumns - contains specifications of columns of users that need to be displayed
+
+### `Form Source`
+
+* eventInputs - inputs that are needed in forms for  creating/editing events 
+
+* taskInputs - inputs that are needed in forms for  creating/editing tasks 
+
+* teamsAndRoles - drop down for teams and roles
+
+* updateInputs - inputs that are needed in forms for  creating/editing updates 
+
+* userInputs - inputs that are needed in forms for  creating/editing users 
+
 ## Style
 
-## App.js
+### `Dark.scss`
 
-## Index.js
+All specifications for dark mode
 
