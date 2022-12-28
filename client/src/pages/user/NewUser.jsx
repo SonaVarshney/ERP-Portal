@@ -1,12 +1,17 @@
 import "../../style/form.scss";
-import AdminNavbar from "../../components/adminNavbar/AdminNavbar";
-import { useState } from "react";
-import axios from "axios"
+
 import DriveFolderUploadIcon from '@mui/icons-material/DriveFolderUpload';
+
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+
+import axios from "axios"
+
 import { roles, teams, integ_subteams, team_subteams } from "../../source/formsource/teamsAndRole"
+import AdminNavbar from "../../components/adminNavbar/AdminNavbar";
 
 const NewUser = ({ inputs, title }) => {
+  
   const [file, setFile] = useState("");
   const [info, setInfo] = useState({});
   const navigate = useNavigate();
@@ -16,6 +21,7 @@ const NewUser = ({ inputs, title }) => {
 
   const handleClick = async (e) => {
     e.preventDefault();
+    
     if (file) {
 
       const data = new FormData();
@@ -43,6 +49,7 @@ const NewUser = ({ inputs, title }) => {
       } catch (error) {
         console.log(error)
       }
+    
     } else {
       try {
         await axios.post("http://localhost:5500/api/auth/register", info)
@@ -54,28 +61,15 @@ const NewUser = ({ inputs, title }) => {
     }
   }
 
-  console.log(info)
 
   return (
     <div className="new">
-      {/* <Sidebar /> */}
-      {/* <NavSidebar /> */}
       <div className="newContainer">
         <AdminNavbar />
         <div className="top">
           <h1>{title}</h1>
         </div>
         <div className="bottom">
-          {/* <div className="left">
-            <img
-              src={
-                file
-                  ? URL.createObjectURL(file)
-                  : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
-              }
-              alt=""
-            />
-          </div> */}
 
           <div className="right">
 

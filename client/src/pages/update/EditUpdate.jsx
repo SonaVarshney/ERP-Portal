@@ -1,13 +1,16 @@
 import "../../style/form.scss";
-import AdminNavbar from "../../components/adminNavbar/AdminNavbar";
-import { useState } from "react";
-import axios from "axios";
-import { useNavigate, useLocation } from "react-router-dom";
-import useFetch from "../../hooks/useFetch";
-import { useEffect } from "react";
 
+import { useState } from "react";
+import { useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+
+import axios from "axios";
+import useFetch from "../../hooks/useFetch";
+
+import AdminNavbar from "../../components/adminNavbar/AdminNavbar";
 
 const EditUpdate = ({ title }) => {
+
   const location = useLocation();
   const id = location.pathname.split("/")[3];
   const { data } = useFetch(`/updates/${id}`)
@@ -40,8 +43,6 @@ const EditUpdate = ({ title }) => {
 
   return (
     <div className="new">
-      {/* <NavSidebar /> */}
-      {/* <Sidebar /> */}
       <div className="newContainer">
         <AdminNavbar />
         <div className="top">
@@ -50,17 +51,6 @@ const EditUpdate = ({ title }) => {
         <div className="bottom">
           <div className="right">
             <form>
-              {/* {inputs.map((input) => (
-                <div className="formInput" key={input.id}>
-                  <label>{input.label}</label>
-                  <input
-                    id={input.id}
-                    type={input.type}
-                    placeholder={input.placeholder}
-                    onChange={handleChange}
-                  />
-                </div>
-              ))} */}
 
               <div className="formInput">
                 <label>Title</label>

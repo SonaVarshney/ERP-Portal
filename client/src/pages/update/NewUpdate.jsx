@@ -14,7 +14,6 @@ const NewUpdate = ({ inputs }) => {
 
   const handleClick = async (e) => {
 
-    const button = document.getElementsByClassName("form-btn")
     e.preventDefault();
 
     try {
@@ -31,8 +30,6 @@ const NewUpdate = ({ inputs }) => {
 
   return (
     <div className="new">
-      {/* <Sidebar /> */}
-      {/* <NavSidebar /> */}
       <div className="newContainer">
         <AdminNavbar />
         <div className="top">

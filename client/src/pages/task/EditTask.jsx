@@ -1,21 +1,27 @@
 import "../../style/form.scss";
 
-import AdminNavbar from "../../components/adminNavbar/AdminNavbar";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
-import { roles } from "../../source/formsource/teamsAndRole"
+
+import axios from "axios";
 import useFetch from "../../hooks/useFetch";
 
+import { roles } from "../../source/formsource/teamsAndRole"
+import AdminNavbar from "../../components/adminNavbar/AdminNavbar";
+
 const EditTask = ({ title }) => {
+  
+  // get location and extract id out of it
   const location = useLocation();
   const id = location.pathname.split("/")[3];
   const [info, setInfo] = useState({});
+
+  // fetch data using id
   const { data } = useFetch(`/tasks/${id}`)
 
   const navigate = useNavigate();
 
-
+  // data needs to be present in forms for it to change hence feed data into the array
   useEffect(() => {
     setInfo(data)
   }, [data])
@@ -24,6 +30,7 @@ const EditTask = ({ title }) => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   }
 
+  // update the data in the data base using put method
   const handleClick = async (e) => {
     e.preventDefault();
     try {
@@ -31,28 +38,31 @@ const EditTask = ({ title }) => {
       await axios.put(`http://localhost:5500/api/tasks/${id}`, info, {
         withCredentials: false
       });
-      // await axios.post("https://stay-solutions.herokuapp.com/api/hotels", newhotel);
+
+      // go back to previous page
       navigate(-1)
     } catch (err) {
       console.log(err)
     }
   }
 
-  // console.log(data)
-  console.log(info)
 
   return (
     <div className="new">
 
       <div className="newContainer">
         <AdminNavbar />
+
+        {/* Title of form */}
         <div className="top">
           <h1>{title}</h1>
         </div>
+
+        {/* Form */}
         <div className="bottom">
           <div className="right">
+            
             <form>
-
               <div className="formInput" >
                 <label>Task Name</label>
                 <input
@@ -87,6 +97,8 @@ const EditTask = ({ title }) => {
 
               <div className="formInput">
                 <label>Assigned To</label>
+                
+                {/* Select bar */}
                 <select
                   id="assignedTo"
                   onChange={handleChange}
@@ -100,6 +112,8 @@ const EditTask = ({ title }) => {
 
               </div>
             </form>
+
+            {/* Submit Button */}
             <button onClick={handleClick} id="submit">Edit Task</button>
           </div>
         </div>

@@ -1,24 +1,33 @@
 import "./newEvent.scss";
-// import Sidebar from "../../components/sidebar/Sidebar";
-import Navbar from "../../components/navbar/Navbar";
-import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
+
 import { useEffect, useState } from "react";
-import axios from "axios"
 import { useNavigate } from "react-router-dom";
+
+import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import DatePicker from "react-datepicker";
+
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
+
+import axios from "axios"
 import useFetch from "../../hooks/useFetch";
+
 import EventModal from "../../components/eventModal/EventModal";
+import Navbar from "../../components/navbar/Navbar";
 
 const NewEvent = ({ inputs, title }) => {
+  
   const [file, setFile] = useState("");
   const [info, setInfo] = useState({});
+
+  // dates
   const [start, setStart] = useState("")
   const [end, setEnd] = useState("")
-  const { user } = useContext(AuthContext)
   const [list, setList] = useState([])
+
+  const { user } = useContext(AuthContext)
   const { data } = useFetch('/events')
+  
   const navigate = useNavigate();
   const handleChange = (e) => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));

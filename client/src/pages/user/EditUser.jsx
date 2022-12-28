@@ -1,12 +1,16 @@
 import "../../style/form.scss";
-import AdminNavbar from "../../components/adminNavbar/AdminNavbar";
-import Navbar from "../../components/navbar/Navbar";
-import { useEffect, useState } from "react";
-import axios from "axios"
+
 import DriveFolderUploadIcon from '@mui/icons-material/DriveFolderUpload';
+
+import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { roles, teams, integ_subteams, team_subteams } from "../../source/formsource/teamsAndRole"
+
 import useFetch from "../../hooks/useFetch";
+import axios from "axios"
+
+import Navbar from "../../components/navbar/Navbar";
+import { roles, teams, integ_subteams, team_subteams } from "../../source/formsource/teamsAndRole"
+import AdminNavbar from "../../components/adminNavbar/AdminNavbar";
 
 const EditUser = ({ title, type }) => {
 

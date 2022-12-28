@@ -1,14 +1,19 @@
 import "../../style/form.scss";
-import AdminNavbar from "../../components/adminNavbar/AdminNavbar";
+
 import { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+
+import axios from "axios";
+
 import { roles } from "../../source/formsource/teamsAndRole"
+import AdminNavbar from "../../components/adminNavbar/AdminNavbar";
 
 const NewTask = ({ inputs, title }) => {
 
   const [info, setInfo] = useState({});
+  
   const navigate = useNavigate();
+  
   const handleChange = (e) => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   }
@@ -25,23 +30,22 @@ const NewTask = ({ inputs, title }) => {
       await axios.post("http://localhost:5500/api/tasks", newtask, {
         withCredentials: false
       });
-      // await axios.post("https://stay-solutions.herokuapp.com/api/hotels", newhotel);
       navigate(-1)
     } catch (err) {
       console.log(err)
     }
   }
 
-  console.log(info)
-
   return (
     <div className="new">
 
       <div className="newContainer">
         <AdminNavbar />
+        
         <div className="top">
           <h1>{title}</h1>
         </div>
+        
         <div className="bottom">
           <div className="right">
             <form>
