@@ -1,43 +1,40 @@
 import "./adminNavbar.scss";
+
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
-import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
 import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
+
 import { DarkModeContext } from "../../context/darkModeContext";
+
 import { useContext, useState } from "react";
-import useFetch from "../../hooks/useFetch";
-import { Link, useNavigate } from "react-router-dom"
-import { AuthContext } from "../../context/AuthContext";
+import { Link} from "react-router-dom"
+
 import AdminSidebar from "../AdminSidebar/AdminSidebar"
 
 const AdminNavbar = () => {
+
+  // calling dispatch function that enables dark mode
   const { Dispatch } = useContext(DarkModeContext);
-  const { data } = useFetch(`/updates`)
-  const { user } = useContext(AuthContext)
-  const [openNotif, setOpenNotif] = useState(false);
+
+  // use state for opening and closing sidebar 
   const [openSidebar, setOpenSidebar] = useState(false);
-
-
-  const navigate = useNavigate();
-
-
-  const handleNotif = () => {
-    setOpenNotif(!openNotif)
-  }
-
 
   return (
     <div className="navbar">
+
+      {/* Side bar only gets opened when openSidebar becomes true */}
       {openSidebar && <AdminSidebar setOpen={setOpenSidebar} />}
 
       <div className="wrapper">
 
+        {/* Home and brand icon */}
         <Link to="/">
           <p className=""><img src={process.env.PUBLIC_URL + "/Assets/brand.png"} height="60px" alt="" /></p>
         </Link>
 
         <div className="items">
 
-
+          {/* Icon to toggle light and dark mode */}
+          
           <div className="item">
             <DarkModeOutlinedIcon
               className="icon"
@@ -45,7 +42,7 @@ const AdminNavbar = () => {
             />
           </div>
 
-          {/* Menu */}
+          {/* Make openSidebar true and false based on how user clicks the icon */}
 
           <div className="item" onClick={() => setOpenSidebar(!openSidebar)}>
             <ListOutlinedIcon className="icon" />

@@ -1,4 +1,5 @@
 import './query.css'
+
 import CancelIcon from '@mui/icons-material/Cancel';
 import { useState } from 'react';
 import axios from "axios"
@@ -6,10 +7,13 @@ import axios from "axios"
 const Query = ({ setOpen, user }) => {
 
     const [info, setInfo] = useState({});
+
+    // set the usestate to the data user passed 
     const handleChange = (e) => {
         setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
     }
 
+    // post the usestate to database
     const handleClick = async (e) => {
         e.preventDefault();
         try {
@@ -26,6 +30,7 @@ const Query = ({ setOpen, user }) => {
     return (
         <div className="modal">
             <div className="mContainer">
+                
                 <CancelIcon
                     className="mClose"
                     onClick={() => setOpen(false)}

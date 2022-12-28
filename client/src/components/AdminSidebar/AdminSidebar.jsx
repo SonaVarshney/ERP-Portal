@@ -1,5 +1,10 @@
-import React from 'react'
+
+import "./adminSidebar.scss"
+
+// animation library 
 import { motion } from "framer-motion";
+
+// @material-ui/core components
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import NotificationsIcon from '@mui/icons-material/Notifications';
@@ -11,8 +16,10 @@ import AddTaskIcon from '@mui/icons-material/AddTask';
 import NotificationAddIcon from '@mui/icons-material/NotificationAdd';
 import CloseIcon from '@mui/icons-material/Close';
 
-import "./adminSidebar.scss"
+
 import { Link } from 'react-router-dom';
+
+// contexts
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { DarkModeContext } from "../../context/darkModeContext";
@@ -20,9 +27,11 @@ import { DarkModeContext } from "../../context/darkModeContext";
 
 const AdminSidebar = ({ setOpen }) => {
 
+    // Dispatch for Dark Mode Toggle and dispatch for logout functionality
     const { Dispatch } = useContext(DarkModeContext);
     const { dispatch } = useContext(AuthContext)
 
+    // function to handle logout
     const handleClick = async (e) => {
         e.preventDefault();
         dispatch({ type: "LOGOUT" });
@@ -32,10 +41,15 @@ const AdminSidebar = ({ setOpen }) => {
         <div className='navSidebarContainer'>
             <motion.div animate={{ width: "200px" }} className="sidebar">
                 <ul>
+
                     <li id='menu'>
                         <h2 >ADMIN MENU</h2>
+                        {/* Close button */}
                         <CloseIcon className='icon' onClick={() => setOpen(false)} />
                     </li>
+
+                    {/* Options under Main which is Dashboard only */}
+
                     <p className="title">Main</p>
                     <Link to="/admin" style={{ textDecoration: "none" }}>
                         <li>
@@ -43,6 +57,9 @@ const AdminSidebar = ({ setOpen }) => {
                             <span>Dashboard</span>
                         </li>
                     </Link>
+
+                    {/* Options under Lists */}
+
                     <p className="title">Lists</p>
 
                     {/* Takes you to list of all registered users */}
@@ -77,6 +94,8 @@ const AdminSidebar = ({ setOpen }) => {
                         </li>
                     </Link>
 
+                    {/* Options under Create */}
+
                     <p className="title">Create</p>
                     <Link to="/admin/users/new" style={{ textDecoration: "none" }}>
                         <li>
@@ -99,13 +118,18 @@ const AdminSidebar = ({ setOpen }) => {
                         </li>
                     </Link>
 
+                    {/* Options under User which is only Logout for now */}
 
                     <p className="title">User</p>
                     <li>
                         <ExitToAppIcon className="icon" />
                         <span onClick={handleClick}>Logout</span>
                     </li>
+
+                    {/* Toggle for Theme */}
+
                     <p className="title">Theme</p>
+                    
                     <div className="theme">
                         <div
                             className="colorOption"

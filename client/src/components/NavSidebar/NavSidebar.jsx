@@ -1,5 +1,9 @@
+import "./navSidebar.scss"
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
+
 import { motion } from "framer-motion";
+
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import TaskIcon from '@mui/icons-material/Task';
 import ContactSupportIcon from '@mui/icons-material/ContactSupport';
@@ -10,11 +14,10 @@ import CloseIcon from '@mui/icons-material/Close';
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import EditIcon from '@mui/icons-material/Edit';
 
-import "./navSidebar.scss"
-import { Link } from 'react-router-dom';
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { DarkModeContext } from "../../context/darkModeContext";
+
 import Query from '../query/Query';
 
 
@@ -22,6 +25,8 @@ const NavSidebar = ({ setOpen }) => {
 
     const { Dispatch } = useContext(DarkModeContext);
     const { dispatch, user } = useContext(AuthContext)
+    
+    // useState for opening query pop up
     const [openQuery, setOpenQuery] = useState(false);
 
     const handleClick = async (e) => {
@@ -31,12 +36,16 @@ const NavSidebar = ({ setOpen }) => {
 
     return (
         <div className='navSidebarContainer'>
+
             <motion.div animate={{ width: "200px" }} className="sidebar">
                 <ul>
+
                     <li id='menu'>
                         <h2 >MAIN MENU</h2>
                         <CloseIcon className='icon' onClick={() => setOpen(false)} />
                     </li>
+
+
                     <p className="title">Main</p>
                     <Link to="/" style={{ textDecoration: "none" }}>
                         <li>
@@ -44,6 +53,9 @@ const NavSidebar = ({ setOpen }) => {
                             <span>Dashboard</span>
                         </li>
                     </Link>
+
+                    {/* All the Lists*/}
+
                     <p className="title">Lists</p>
 
                     {/* Takes you to list of all tasks created by admin */}
@@ -62,7 +74,10 @@ const NavSidebar = ({ setOpen }) => {
                         </li>
                     </Link>
 
+                    {/* Create events/queries */}
                     <p className="title">Create</p>
+
+                    {/* Event can be created only when user is a part of technical team so it will only be visible to them */}
                     <Link to="/newEvent" style={{ textDecoration: "none" }}>
                         {user.subteam === "Technical Team" &&
                             <li>
@@ -71,30 +86,40 @@ const NavSidebar = ({ setOpen }) => {
                             </li>
                         }
                     </Link>
-
+                    
+                    {/* On click set usestate to true */}
                     <li onClick={() => setOpenQuery(true)}>
                         <ContactSupportIcon className="icon" />
                         <span>Query</span>
                     </li>
 
-
+                    {/* Options for Users */}
+                    
                     <p className="title">User</p>
+
+                    {/* View Profile */}
                     <Link to={`/users/${user._id}`} style={{ textDecoration: "none" }}>
                         <li>
                             <AccountCircleOutlinedIcon className="icon" />
                             <span>Profile</span>
                         </li>
                     </Link>
+
+                    {/* Edit Profile */}
                     <Link to={`/users/${user._id}/edit`} style={{ textDecoration: "none" }}>
                         <li>
                             <EditIcon className="icon" />
                             <span>Edit Profile</span>
                         </li>
                     </Link>
+
+                    {/* Logout Button */}
                     <li>
                         <ExitToAppIcon className="icon" />
                         <span onClick={handleClick}>Logout</span>
                     </li>
+                    
+                    {/* Toggle Theme */}
                     <p className="title">Theme</p>
                     <div className="theme">
                         <div
@@ -108,6 +133,8 @@ const NavSidebar = ({ setOpen }) => {
                     </div>
                 </ul>
             </motion.div >
+
+            {/* When use state becomes true pop up will show up */}
             {openQuery && <Query setOpen={setOpenQuery} user={user} />}
         </div >
     )

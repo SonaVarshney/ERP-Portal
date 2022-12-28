@@ -1,19 +1,27 @@
-import React from 'react'
+import "./modal.css"
+
 import CancelIcon from '@mui/icons-material/Cancel';
 import useFetch from "../../hooks/useFetch"
-import "./modal.css"
+
+
+// setOpen prop, id is the id of the data we need to display and type will tell whether it's task or update
 
 const Modal = ({ setOpen, id, type }) => {
 
+    // fetch the required data
     const { data } = useFetch(`/${type}/${id}`);
 
     return (
         <div className="modal">
             <div className="mContainer">
+
+                {/* setOpen set to false so that pop up closes */}
                 <CancelIcon
                     className="mClose"
                     onClick={() => setOpen(false)}
                 />
+                
+                {/* if type is updates */}
                 {
                     type === "updates" &&
                     <div className="mUpdates">
@@ -24,6 +32,8 @@ const Modal = ({ setOpen, id, type }) => {
                         </button>
                     </div>
                 }
+
+                {/* If type is tasks */}
                 {
                     type === "tasks" &&
                     <div className="mTasks">

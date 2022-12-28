@@ -1,70 +1,74 @@
-# Getting Started with Create React App
+# Client Side Documentation
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Components
 
-## Available Scripts
+These are the Components and what they do:
 
-In the project directory, you can run:
+### `Admin Navbar`
 
-### `npm start`
+It is the navbar on the Admin Side with a few icons for navigation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### `Admin Sidebar`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+It is the sidebar at Admin Side, it is used to navigate to the various pages.
 
-### `npm test`
+### `Chart`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The component that contains Graph
 
-### `npm run build`
+### `Datatable`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This component is used again and again to call list of all users, tasks, updates, etc.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+For users a separate page opens when user clicks on view but when they click on view of tasks or updates a pop up appears
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+For edit another page appears for all of them
 
-### `npm run eject`
+### `EventModal`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+This is the pop up that appears when user opens to view an event with event poster and other details. If the user is the owner or creator of the event they can edit/delete it as well
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### `Featured`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+This is the total revenue box on main page 
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### `Modal`
 
-## Learn More
+This is the pop up that opens on clicking view on tasks and updates entries. 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### `Navbar`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+It is the navbar at Student Side
 
-### Code Splitting
+### `NavSidebar`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+It is the sidebar at Student Side
 
-### Analyzing the Bundle Size
+### `Query`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+This is used to post queries by users from client side to admin side
 
-### Making a Progressive Web App
+### `Table`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+This is used to show the upcoming/latest events on main landing page. Only shows a few select details
 
-### Advanced Configuration
+### `Widget`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+These are the four boxes on landing page
 
-### Deployment
+## Context
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Hooks
 
-### `npm run build` fails to minify
+## Pages
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Routes
+
+## Source
+
+## Style
+
+## App.js
+
+## Index.js
+
