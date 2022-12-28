@@ -1,4 +1,4 @@
-import "./newUser.scss";
+import "../../style/form.scss";
 import AdminNavbar from "../../components/adminNavbar/AdminNavbar";
 import { useState } from "react";
 import axios from "axios"
@@ -66,7 +66,7 @@ const NewUser = ({ inputs, title }) => {
           <h1>{title}</h1>
         </div>
         <div className="bottom">
-          <div className="left">
+          {/* <div className="left">
             <img
               src={
                 file
@@ -75,12 +75,21 @@ const NewUser = ({ inputs, title }) => {
               }
               alt=""
             />
-          </div>
+          </div> */}
 
           <div className="right">
-            <form>
 
-              <div className="formInput">
+          <div className="left">
+          <img
+              src={
+                file
+                  ? URL.createObjectURL(file)
+                  : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+              }
+              alt=""
+            />
+
+            <div className="formInput">
                 <label htmlFor="file">
                   Image: <DriveFolderUploadIcon className="icon" />
                 </label>
@@ -91,6 +100,10 @@ const NewUser = ({ inputs, title }) => {
                   style={{ display: "none" }}
                 />
               </div>
+              
+          </div>
+
+            <form>
 
               <div className="formInput">
                 <label>Taken as GEC</label>
@@ -182,7 +195,9 @@ const NewUser = ({ inputs, title }) => {
               </div>
 
             </form>
-            <button onClick={handleClick}>Create User</button>
+            <div className="submitButton">
+              <button onClick={handleClick} className="form-btn">Create User</button>
+            </div>
           </div>
         </div>
       </div>

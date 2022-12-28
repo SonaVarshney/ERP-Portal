@@ -4,19 +4,19 @@
 
 These are the Components and what they do:
 
-### `Admin Navbar`
+#### `Admin Navbar`
 
 It is the navbar on the Admin Side with a few icons for navigation
 
-### `Admin Sidebar`
+#### `Admin Sidebar`
 
 It is the sidebar at Admin Side, it is used to navigate to the various pages.
 
-### `Chart`
+#### `Chart`
 
 The component that contains Graph
 
-### `Datatable`
+#### `Datatable`
 
 This component is used again and again to call list of all users, tasks, updates, etc.
 
@@ -24,97 +24,97 @@ For users a separate page opens when user clicks on view but when they click on 
 
 For edit another page appears for all of them
 
-### `EventModal`
+#### `EventModal`
 
 This is the pop up that appears when user opens to view an event with event poster and other details. If the user is the owner or creator of the event they can edit/delete it as well
 
-### `Featured`
+#### `Featured`
 
 This is the total revenue box on main page 
 
-### `Modal`
+#### `Modal`
 
 This is the pop up that opens on clicking view on tasks and updates entries. 
 
-### `Navbar`
+#### `Navbar`
 
 It is the navbar at Student Side
 
-### `NavSidebar`
+#### `NavSidebar`
 
 It is the sidebar at Student Side
 
-### `Query`
+#### `Query`
 
 This is used to post queries by users from client side to admin side
 
-### `Table`
+#### `Table`
 
 This is used to show the upcoming/latest events on main landing page. Only shows a few select details
 
-### `Widget`
+#### `Widget`
 
 These are the four boxes on landing page
 
 ## Context
 
-### `AuthContext`
+#### `AuthContext`
 
 Saves the details of the user in local storage when they are logged in 
 
-### `DarkModeContext`
+#### `DarkModeContext`
 
 Sets and returns the current theme
 
-### `DarkModeReducer`
+#### `DarkModeReducer`
 
 Function to toggle the dark mode
 
 ## Hooks
 
-### `useFetch`
+#### `useFetch`
 
 It contains functions that are used to fetch the data based on the url provided to the function using axios
 
 ## Pages
 
-### `Event`
+#### `Event`
 
-### `Home`
+#### `Home`
 
 It loads home page for both admin and user side based on the type of prop passed to it
 
-### `List`
+#### `List`
 
 It is the page which renders the data tables based on the props passed
 
-### `Login`
+#### `Login`
 
 Login page is redirects to different areas based on which side we are logging into
 
-### `Single`
+#### `Single`
 
 Single page displays all the details of the user
 
-### `Task`
+#### `Task`
 
-### `Update`
+#### `Update`
 
-### `User`
+#### `User`
 
 ## Routes
 
-### `Admin Routes`
+#### `Admin Routes`
 
 Routes for admin side
 
-### `Main Routes`
+#### `Main Routes`
 
 Routes for main side
 
 ## Source
 
-### `DataTable Source`
+#### `DataTable Source`
 
 * eventColumns - contains specifications of columns of events that need to be displayed
 
@@ -124,7 +124,7 @@ Routes for main side
 
 * userColumns - contains specifications of columns of users that need to be displayed
 
-### `Form Source`
+#### `Form Source`
 
 * eventInputs - inputs that are needed in forms for  creating/editing events 
 
@@ -138,7 +138,7 @@ Routes for main side
 
 ## Style
 
-### `Dark.scss`
+#### `Dark.scss`
 
 All specifications for dark mode
 

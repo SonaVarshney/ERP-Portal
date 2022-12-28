@@ -48,7 +48,7 @@ const Query = ({ setOpen, user }) => {
                     />
                     <textarea
                         name="Query"
-                        id="desc"
+                        id="description"
                         cols="30"
                         rows="10"
                         onChange={handleChange}

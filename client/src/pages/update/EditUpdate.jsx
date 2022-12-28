@@ -1,4 +1,4 @@
-import "./editUpdate.scss";
+import "../../style/form.scss";
 import AdminNavbar from "../../components/adminNavbar/AdminNavbar";
 import { useState } from "react";
 import axios from "axios";

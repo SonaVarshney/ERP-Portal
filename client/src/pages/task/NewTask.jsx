@@ -1,4 +1,4 @@
-import "./newTask.scss";
+import "../../style/form.scss";
 import AdminNavbar from "../../components/adminNavbar/AdminNavbar";
 import { useState } from "react";
 import axios from "axios";
@@ -36,8 +36,7 @@ const NewTask = ({ inputs, title }) => {
 
   return (
     <div className="new">
-      {/* <Sidebar /> */}
-      {/* <NavSidebar /> */}
+
       <div className="newContainer">
         <AdminNavbar />
         <div className="top">

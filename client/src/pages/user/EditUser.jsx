@@ -1,4 +1,4 @@
-import "./editUser.scss";
+import "../../style/form.scss";
 import AdminNavbar from "../../components/adminNavbar/AdminNavbar";
 import Navbar from "../../components/navbar/Navbar";
 import { useEffect, useState } from "react";
