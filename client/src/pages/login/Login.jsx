@@ -7,8 +7,14 @@ import { useContext, useState } from 'react'
 import { AuthContext } from '../../context/AuthContext'
 
 
+
+
 // type will tell whether admin or student
 function Login({ type }) {
+
+
+  const classURL = "https://drive.google.com/uc?id=1AO6eJhTrn8bF4U-JA9OcRP6pLq2P2E5p";
+  const teachURL = "https://drive.google.com/uc?id=1vbn0I0RkKFCyxbZfHtLcQ3j3GN0UCm-1";
 
   // function to navigate to a certain page once logged in
   const navigate = useNavigate();
@@ -59,8 +65,17 @@ function Login({ type }) {
 
   return (
     <div className="AdminLogin">
+
+      <div className="img-container">
+        <img src={type === "Admin"? teachURL : classURL} alt="" />
+      </div>
+
       <div className="lContainer">
 
+        <h1>Welcome to {type === "Admin"? "Admin Portal" : "Student Portal"}!</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+
+        <label htmlFor="username">Enter Username</label>
         <input
           type="text"
           placeholder="username"
@@ -69,6 +84,7 @@ function Login({ type }) {
           className="lInput"
         />
 
+        <label htmlFor="password">Password</label>
         <input
           type="password"
           placeholder="password"
@@ -76,6 +92,8 @@ function Login({ type }) {
           onChange={handleChange}
           className="lInput"
         />
+
+        <p style={{"marginTop": "20px", "marginBottom": "10px"}}>Forgot Password?</p>
 
         {/* When button is clicked called handleclick so all the operations can be performed*/}
         <button disabled={loading} onClick={handleClick} className="lButton">

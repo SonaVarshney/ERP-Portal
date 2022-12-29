@@ -6,8 +6,7 @@ import MainRoutes from "./routes/MainRoutes";
 
 
 function App() {
-  const { darkMode } = useContext(DarkModeContext);
-
+  const { darkMode } = useContext(DarkModeContext);  
 
   return (
     <div className={darkMode ? "app dark" : "app"}>

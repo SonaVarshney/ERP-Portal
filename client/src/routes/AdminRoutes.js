@@ -32,12 +32,13 @@ function AdminRoutes() {
         if (user && user.username === "csd-admin")
             return children;
         else
-            return <Navigate to="/adminLogin" />
+            return <Navigate to="/AdminLogin" />
     }
 
     return (
         <BrowserRouter>
             <Routes>
+                
                 {/* login page for admin */}
                 <Route path="/adminLogin" element={
                     <AdminLogin type="Admin" />

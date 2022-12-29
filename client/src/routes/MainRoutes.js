@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import { AuthContext } from "../context/AuthContext";
 
 //datatable columns
-import { userColumns } from "../source/datatablesource/userColumns";
 import { taskColumns } from "../source/datatablesource/taskColumns";
 import { updateColumns } from "../source/datatablesource/updateColumns";
 
@@ -30,6 +29,7 @@ function AdminRoutes() {
     return (
         <BrowserRouter>
             <Routes>
+
                 {/* login page for main */}
                 <Route path="/login" element={
                     <Login type="Main" />
@@ -43,9 +43,6 @@ function AdminRoutes() {
                         <Home type="Main" />
                     </RequireAuth>
                 } />
-
-
-
 
                 {/* profile page */}
                 <Route path="/users/:id" element={
