@@ -23,6 +23,7 @@ import NewUpdate from "../pages/update/NewUpdate"
 import EditTask from '../pages/task/EditTask';
 import EditUpdate from '../pages/update/EditUpdate';
 import EditUser from '../pages/user/EditUser';
+import Landing from "../pages/Landing/Landing";
 
 function AdminRoutes() {
     const { user } = useContext(AuthContext)
@@ -32,13 +33,16 @@ function AdminRoutes() {
         if (user && user.username === "csd-admin")
             return children;
         else
-            return <Navigate to="/AdminLogin" />
+            return <Navigate to="/home" />
     }
 
     return (
         <BrowserRouter>
             <Routes>
                 
+                {/* Landing page */}
+                <Route path="/home" element={<Landing />} />
+
                 {/* login page for admin */}
                 <Route path="/adminLogin" element={
                     <AdminLogin type="Admin" />

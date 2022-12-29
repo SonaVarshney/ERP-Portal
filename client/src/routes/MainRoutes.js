@@ -18,17 +18,21 @@ import NewEvent from '../pages/event/NewEvent';
 import EditUser from '../pages/user/EditUser'
 import Events from '../pages/event/Events';
 import EditEvent from '../pages/event/EditEvent';
+import Landing from "../pages/Landing/Landing";
 
 function AdminRoutes() {
     const { user } = useContext(AuthContext)
 
     const RequireAuth = ({ children }) => {
-        return user ? (children) : <Navigate to="/login" />
+        return user ? (children) : <Navigate to="/home" />
     }
 
     return (
         <BrowserRouter>
             <Routes>
+
+                {/* Landing page */}
+                <Route path="/home" element={<Landing />} />
 
                 {/* login page for main */}
                 <Route path="/login" element={
