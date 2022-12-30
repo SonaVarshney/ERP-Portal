@@ -1,9 +1,11 @@
 import "./widget.scss";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
-import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
+import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRounded';
+import DeviceHubIcon from '@mui/icons-material/DeviceHub';
+import StorageIcon from '@mui/icons-material/Storage';
+import LanIcon from '@mui/icons-material/Lan';
+import ComputerIcon from '@mui/icons-material/Computer';
+import SourceIcon from '@mui/icons-material/Source';
+import DevicesRoundedIcon from '@mui/icons-material/DevicesRounded';
 
 const Widget = ({ type }) => {
   let data;
@@ -18,7 +20,7 @@ const Widget = ({ type }) => {
         teacher: "Course Incharge: Ms. abc",
         link: "Related Material and Syllabus",
         icon: (
-          <PersonOutlinedIcon
+          <ComputerIcon
             className="icon"
             style={{
               color: "crimson",
@@ -36,7 +38,7 @@ const Widget = ({ type }) => {
         teacher: "Course Incharge: Ms. abc",
         link: "Related Material and Syllabus",
         icon: (
-          <ShoppingCartOutlinedIcon
+          <SourceIcon
             className="icon"
             style={{
               backgroundColor: "rgba(218, 165, 32, 0.2)",
@@ -54,7 +56,7 @@ const Widget = ({ type }) => {
         teacher: "Course Incharge: Ms. abc",
         link: "Related Material and Syllabus",
         icon: (
-          <MonetizationOnOutlinedIcon
+          <DevicesRoundedIcon
             className="icon"
             style={{ backgroundColor: "rgba(0, 128, 0, 0.2)", color: "green" }}
           />
@@ -69,7 +71,7 @@ const Widget = ({ type }) => {
         teacher: "Course Incharge: Ms. abc",
         link: "Related Material and Syllabus",
         icon: (
-          <AccountBalanceWalletOutlinedIcon
+          <DeviceHubIcon
             className="icon"
             style={{
               backgroundColor: "rgba(128, 0, 128, 0.2)",
@@ -87,11 +89,11 @@ const Widget = ({ type }) => {
         teacher: "Course Incharge: Ms. abc",
         link: "Related Material and Syllabus",
         icon: (
-          <AccountBalanceWalletOutlinedIcon
+          <StorageIcon
             className="icon"
             style={{
-              backgroundColor: "rgba(128, 0, 128, 0.2)",
-              color: "purple",
+              backgroundColor: "rgba(220, 53, 53, 0.2)",
+              color: "rgb(220, 53, 53)",
             }}
           />
         ),
@@ -105,11 +107,11 @@ const Widget = ({ type }) => {
         teacher: "Course Incharge: Ms. abc",
         link: "Related Material and Syllabus",
         icon: (
-          <AccountBalanceWalletOutlinedIcon
+          <LanIcon
             className="icon"
             style={{
-              backgroundColor: "rgba(128, 0, 128, 0.2)",
-              color: "purple",
+              backgroundColor: "rgba(200, 92, 142, 0.2)",
+              color: "rgb(200, 92, 142)",
             }}
           />
         ),
@@ -128,8 +130,8 @@ const Widget = ({ type }) => {
         <span className="link">{data.link}</span>
       </div>
       <div className="right">
-        <div className="percentage positive">
-          <KeyboardArrowUpIcon />
+        <div className="credit">
+          <ArrowForwardIosRoundedIcon />
           {data.credit}
         </div>
         {data.icon}

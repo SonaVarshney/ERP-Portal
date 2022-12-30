@@ -29,7 +29,7 @@
       width: max-content;
       font-size: 12px;
       font-weight: 600;
-      color: blueviolet;
+      color: #144272;
     }
 
     .link {
@@ -38,17 +38,11 @@
       border-bottom: 1px solid gray;
     }
 
-    .percentage {
+    .credit {
       display: flex;
       align-items: center;
-      font-size: 14px;
-
-      &.positive {
-        color: green;
-      }
-      &.negative {
-        color: red;
-      }
+      font-size: 16px;
+      color: #7B2869;
     }
 
     .icon {
