@@ -102,16 +102,6 @@ Single page displays all the details of the user
 
 #### `User`
 
-## Routes
-
-#### `Admin Routes`
-
-Routes for admin side
-
-#### `Main Routes`
-
-Routes for main side
-
 ## Source
 
 #### `DataTable Source`
