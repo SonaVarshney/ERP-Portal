@@ -3,7 +3,7 @@ import "./home.scss";
 // calling all the components on the page
 import Navbar from "../../components/navbar/Navbar";
 import AdminNavbar from "../../components/adminNavbar/AdminNavbar"
-import Widget from "../../components/widget/Widget";
+import Widget from "../../components/Courses/Courses";
 import Featured from "../../components/featured/Featured";
 import Chart from "../../components/chart/Chart";
 import Table from "../../components/table/Table";

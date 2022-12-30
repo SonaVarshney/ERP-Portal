@@ -1,4 +1,4 @@
-import "./widget.scss";
+import "./Courses.scss";
 import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRounded';
 import DeviceHubIcon from '@mui/icons-material/DeviceHub';
 import StorageIcon from '@mui/icons-material/Storage';
