@@ -8,16 +8,15 @@ import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlin
 const Widget = ({ type }) => {
   let data;
 
-  //temporary
-  const amount = 100;
-  const diff = 20;
 
   switch (type) {
-    case "user":
+    case "ml":
       data = {
-        title: "USERS",
-        isMoney: false,
-        link: "See all users",
+        title: "MACHINE LEARNING",
+        code: 312,
+        credit: 4,
+        teacher: "Course Incharge: Ms. abc",
+        link: "Related Material and Syllabus",
         icon: (
           <PersonOutlinedIcon
             className="icon"
@@ -29,11 +28,13 @@ const Widget = ({ type }) => {
         ),
       };
       break;
-    case "order":
+    case "oops":
       data = {
-        title: "ORDERS",
-        isMoney: false,
-        link: "View all orders",
+        title: "OOPS",
+        code: 314,
+        credit: 4,
+        teacher: "Course Incharge: Ms. abc",
+        link: "Related Material and Syllabus",
         icon: (
           <ShoppingCartOutlinedIcon
             className="icon"
@@ -45,11 +46,13 @@ const Widget = ({ type }) => {
         ),
       };
       break;
-    case "earning":
+    case "compilerdesign":
       data = {
-        title: "EARNINGS",
-        isMoney: true,
-        link: "View net earnings",
+        title: "COMPILER DESIGN",
+        code: 316,
+        credit: 4,
+        teacher: "Course Incharge: Ms. abc",
+        link: "Related Material and Syllabus",
         icon: (
           <MonetizationOnOutlinedIcon
             className="icon"
@@ -58,11 +61,49 @@ const Widget = ({ type }) => {
         ),
       };
       break;
-    case "balance":
+    case "operatingsystem":
       data = {
-        title: "BALANCE",
-        isMoney: true,
-        link: "See details",
+        title: "OPERATING SYSTEM",
+        code: 412,
+        credit: 4,
+        teacher: "Course Incharge: Ms. abc",
+        link: "Related Material and Syllabus",
+        icon: (
+          <AccountBalanceWalletOutlinedIcon
+            className="icon"
+            style={{
+              backgroundColor: "rgba(128, 0, 128, 0.2)",
+              color: "purple",
+            }}
+          />
+        ),
+      };
+      break;
+      case "systemdesign":
+      data = {
+        title: "SYSTEM DESIGN",
+        code: 414,
+        credit: 4,
+        teacher: "Course Incharge: Ms. abc",
+        link: "Related Material and Syllabus",
+        icon: (
+          <AccountBalanceWalletOutlinedIcon
+            className="icon"
+            style={{
+              backgroundColor: "rgba(128, 0, 128, 0.2)",
+              color: "purple",
+            }}
+          />
+        ),
+      };
+      break;
+      case "computernetwork":
+      data = {
+        title: "COMPUTER NETWORKS",
+        code: 416,
+        credit: 4,
+        teacher: "Course Incharge: Ms. abc",
+        link: "Related Material and Syllabus",
         icon: (
           <AccountBalanceWalletOutlinedIcon
             className="icon"
@@ -82,15 +123,14 @@ const Widget = ({ type }) => {
     <div className="widget">
       <div className="left">
         <span className="title">{data.title}</span>
-        <span className="counter">
-          {data.isMoney && "$"} {amount}
-        </span>
+        <span className="teacher">{data.teacher}</span>
+        <span className="code">{data.code}</span>
         <span className="link">{data.link}</span>
       </div>
       <div className="right">
         <div className="percentage positive">
           <KeyboardArrowUpIcon />
-          {diff} %
+          {data.credit}
         </div>
         {data.icon}
       </div>

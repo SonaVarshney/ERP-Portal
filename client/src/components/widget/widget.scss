@@ -16,13 +16,20 @@
 
     .title {
       font-weight: bold;
-      font-size: 14px;
+      font-size: 16px;
+    }
+
+    .code {
+      font-weight: bold;
+      font-size: 16px;
       color: rgb(160, 160, 160);
     }
 
-    .counter {
-      font-size: 28px;
-      font-weight: 300;
+    .teacher {
+      width: max-content;
+      font-size: 12px;
+      font-weight: 600;
+      color: blueviolet;
     }
 
     .link {
