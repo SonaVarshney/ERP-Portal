@@ -5,6 +5,17 @@
   background-color: #111;
   color: white;
 
+  .home {
+    background-color: #111;
+  }
+  
+  .landing-container, .list, .single, .new {
+    height: 100vh;
+  }
+
+  .list {
+    overflow-y: hidden;
+  }
 
   .chartGrid {
     stroke: rgba(228, 228, 228, 0.219);
@@ -32,8 +43,17 @@
   }
 
   .sidebar {
-    background-color: #111;
-    border-color: #333;
+    border-color: rgb(84, 82, 82);
+    background-color: #5353AF;
+
+    #menu {
+      .icon {
+
+        &:hover {
+          color: #5353AF;
+        }
+      }
+    }
 
     .top {
       .logo {
@@ -49,6 +69,7 @@
       li {
         &:hover {
           background-color: #333;
+        color: white;
         }
 
         .icon {
