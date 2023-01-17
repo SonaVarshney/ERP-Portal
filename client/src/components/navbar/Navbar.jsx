@@ -48,7 +48,8 @@ const Navbar = () => {
 
         {/* takes to main landing page and if it is darkmode changes the brand so it's visible*/}
         <Link to="/">
-          {darkMode ? <p className="brand"><img src={process.env.PUBLIC_URL + "/Assets/brand2.png"} height="60px" alt="" /></p> : <p className="brand"><img src={process.env.PUBLIC_URL + "/Assets/brand.png"} height="60px" alt="" /></p>}
+          {/* {darkMode ? <p className="brand"><img src={process.env.PUBLIC_URL + "/Assets/brand2.png"} height="60px" alt="" /></p> : <p className="brand"><img src={process.env.PUBLIC_URL + "/Assets/brand.png"} height="60px" alt="" /></p>} */}
+          <p style={{"color": "black"}}>ERP Portal</p>
         </Link>
 
         <div className="items">

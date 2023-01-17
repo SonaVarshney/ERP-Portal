@@ -15,7 +15,7 @@ import useFetch from "../../hooks/useFetch.js"
 const List = () => {
 
   // fetch latest/upcoming events
-  const { data } = useFetch("/events");
+  const { data } = useFetch("/tasks");
 
   return (
     <TableContainer component={Paper} className="table">
@@ -24,12 +24,12 @@ const List = () => {
 
           {/* Column Names */}
           <TableRow>
-            <TableCell className="tableCell">Event ID</TableCell>
-            <TableCell className="tableCell">Name</TableCell>
+            <TableCell className="tableCell">Task ID</TableCell>
+            <TableCell className="tableCell">Task</TableCell>
             <TableCell className="tableCell">Description</TableCell>
-            <TableCell className="tableCell">Team</TableCell>
-            <TableCell className="tableCell">Venue</TableCell>
-            <TableCell className="tableCell">Date</TableCell>
+            <TableCell className="tableCell">Assigned To</TableCell>
+            <TableCell className="tableCell">Deadline</TableCell>
+            {/* <TableCell className="tableCell">Date</TableCell> */}
           </TableRow>
         </TableHead>
 
@@ -43,19 +43,19 @@ const List = () => {
               {/* id of data entry */}
               <TableCell className="tableCell">{row._id}</TableCell>
               
-              {/* Event poster and name */}
+              {/* Event poster and name
               <TableCell className="tableCell">
                 <div className="cellWrapper">
                   <img src={row.poster} alt="" className="image" />
                   {row.name}
                 </div>
-              </TableCell>
+              </TableCell> */}
 
               {/* Other details */}
-              <TableCell className="tableCell">{row.desc}</TableCell>
-              <TableCell className="tableCell">{row.teamName}</TableCell>
-              <TableCell className="tableCell">{row.venue}</TableCell>
-              <TableCell className="tableCell">{row.date}</TableCell>
+              <TableCell className="tableCell">{row.title}</TableCell>
+              <TableCell className="tableCell">{`${row.desc.slice(0, 30)}...`}</TableCell>
+              <TableCell className="tableCell">{row.assignedTo}</TableCell>
+              <TableCell className="tableCell">{row.deadline}</TableCell>
               
               {/* Can be used to show some kind of status */}
               

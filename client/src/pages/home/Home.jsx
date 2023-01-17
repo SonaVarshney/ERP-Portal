@@ -28,15 +28,15 @@ const Home = ({ type }) => {
           <Widget type="systemdesign" />
         </div>
 
-        {/* total revenue and charts */}
+        {/* total revenue and charts
         <div className="charts">
           <Featured />
           <Chart title="Last 6 Months (Revenue)" aspect={2 / 1} />
-        </div>
+        </div> */}
 
         {/* Upcoming Events */}
         <div className="AdminListContainer">
-          <div className="listTitle">Upcoming Events</div>
+          <div className="listTitle">Tasks Assigned</div>
           <Table type="updates" />
         </div>
       </div>

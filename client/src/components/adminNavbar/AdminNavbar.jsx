@@ -28,7 +28,8 @@ const AdminNavbar = () => {
 
         {/* Home and brand icon */}
         <Link to="/admin">
-          <p className=""><img src={process.env.PUBLIC_URL + "/Assets/brand.png"} height="60px" alt="" /></p>
+          {/* <p className=""><img src={process.env.PUBLIC_URL + "/Assets/brand.png"} height="60px" alt="" /></p> */}
+          <p style={{"color" : "black"}}>Admin Dashboard</p>
         </Link>
 
         <div className="items">
