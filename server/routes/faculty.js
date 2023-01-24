@@ -10,10 +10,10 @@ import {
 
 const router = express.Router();
 
-router.put("/registerFaculty", registerFaculty);
-router.delete("/loginFaculty", loginFaculty);
-router.get("/:id", updateFaculty);
-router.get("/:id", deleteFaculty);
+router.post("/registerFaculty", registerFaculty);
+router.post("/loginFaculty", loginFaculty);
+router.put("/:id", updateFaculty);
+router.delete("/:id", deleteFaculty);
 router.get("/:id", getFaculty);
 router.get("/", getFacultys);
 

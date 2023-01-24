@@ -7,8 +7,8 @@ import {
 
 const router = express.Router();
 
-router.put("/registerAdmin", registerAdmin);
-router.delete("/loginAdmin", loginAdmin);
-router.get("/:id", updateAdmin);
+router.post("/registerAdmin", registerAdmin);
+router.post("/loginAdmin", loginAdmin);
+router.put("/:id", updateAdmin);
 
 export default router;
