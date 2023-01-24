@@ -6,7 +6,7 @@ import {
   getTasks,
   updateTask,
 } from "../controllers/tasks.js";
-import { verifyAdmin, verifyUser } from "../utils/verifyToken.js";
+import { verifyUser } from "../utils/verifyToken.js";
 
 const router = express.Router();
 

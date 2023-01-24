@@ -1,24 +1,19 @@
 import mongoose from "mongoose";
 
-const UserSchema = new mongoose.Schema(
+const FacultySchema = new mongoose.Schema(
   {
-    username: {
+    name: {
       type: String,
-      require: true,
-      min: 3,
-      max: 20,
-      unique: true,
+      required: true
     },
     email: {
       type: String,
       required: true,
-      max: 50,
-      unique: true,
+      unique: true
     },
-    password: {
+    enroll: {
       type: String,
-      required: true,
-      min: 6,
+      required: true
     },
     profilePicture: {
       type: String,
@@ -26,43 +21,37 @@ const UserSchema = new mongoose.Schema(
     cloud_id: {
       type: String,
     },
-    name: {
+    password: {
       type: String,
       required: true
     },
-    role: {
+    gender: {
       type: String,
       required: true
     },
-    team: {
-      type: String
-    },
-    subteam: {
-      type: String
-    },
-    year: {
+    department: {
       type: String,
       required: true
     },
-    branch: {
+    designation: {
       type: String,
       required: true
     },
-    phone: {
+    facultyPhone: {
       type: String,
       required: true
     },
-    isGEC: {
-      type: Boolean,
-      required: true
-    },
-    folderLink: {
+    facultyAddress: {
       type: String,
       required: true
     },
-    isAdmin: {
-      type: Boolean,
-      default: false
+    dob: {
+      type: String,
+      required: true
+    },
+    joiningYear: {
+      type: String,
+      required: true
     }
   },
   { timestamps: true }
@@ -70,4 +59,4 @@ const UserSchema = new mongoose.Schema(
 
 
 
-export default mongoose.model("User", UserSchema);
+export default mongoose.model("Faculty", FacultySchema);

@@ -6,7 +6,7 @@ import {
     getEvents,
     updateEvent,
 } from "../controllers/events.js";
-import { verifyUser, verifyAdmin } from "../utils/verifyToken.js";
+import { verifyUser} from "../utils/verifyToken.js";
 // router variable
 
 const router = express.Router();

@@ -7,8 +7,9 @@ import cookieParser from "cookie-parser";
 import cors from "cors"
 
 //import route
-import userRoute from "./routes/users.js";
-import authRoute from "./routes/auth.js";
+import adminRoute from "./routes/admin.js";
+import facultyRoute from "./routes/faculty.js";
+import studentRoute from "./routes/student.js";
 import taskRoute from "./routes/tasks.js";
 import updateRoute from "./routes/updates.js";
 import eventRoute from "./routes/events.js";
@@ -60,8 +61,9 @@ app.get('/', (req, res) => { res.send('Hello from Express!') });
 
 //routes
 
-app.use("/api/auth", authRoute);
-app.use("/api/users", userRoute);
+app.use("/api/admins", adminRoute);
+app.use("/api/faculties", facultyRoute);
+app.use("/api/students", studentRoute);
 app.use("/api/tasks", taskRoute);
 app.use("/api/updates", updateRoute);
 app.use("/api/events", eventRoute);
