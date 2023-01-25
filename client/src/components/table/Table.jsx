@@ -24,7 +24,6 @@ const List = () => {
 
           {/* Column Names */}
           <TableRow>
-            <TableCell className="tableCell">Task ID</TableCell>
             <TableCell className="tableCell">Task</TableCell>
             <TableCell className="tableCell">Description</TableCell>
             <TableCell className="tableCell">Assigned To</TableCell>
@@ -39,9 +38,6 @@ const List = () => {
 
             // row.id is just a number
             <TableRow key={row.id}>
-
-              {/* id of data entry */}
-              <TableCell className="tableCell">{row._id}</TableCell>
               
               {/* Event poster and name
               <TableCell className="tableCell">

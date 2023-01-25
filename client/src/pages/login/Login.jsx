@@ -12,12 +12,26 @@ import { AuthContext } from '../../context/AuthContext'
 // type will tell whether admin or student
 function Login({ type }) {
 
+  var url;
+  var post_url;
 
-  const classURL = "https://drive.google.com/uc?id=1AO6eJhTrn8bF4U-JA9OcRP6pLq2P2E5p";
-  const teachURL = "https://drive.google.com/uc?id=1vbn0I0RkKFCyxbZfHtLcQ3j3GN0UCm-1";
+  if(type==="Faculty") {
+    url = "https://drive.google.com/uc?id=1pB5VggYKPL8B-7q7EnAUwKSKttXsC8bV"
+    post_url = "http://localhost:5500/api/faculties/loginFaculty"
+
+  } else if(type==="Student") {
+    url = "https://drive.google.com/uc?id=1AO6eJhTrn8bF4U-JA9OcRP6pLq2P2E5p";
+    post_url = "http://localhost:5500/api/students/loginStudent"
+
+  } else {
+    url = "https://drive.google.com/uc?id=1vbn0I0RkKFCyxbZfHtLcQ3j3GN0UCm-1"
+    post_url = "http://localhost:5500/api/admins/loginAdmin"
+  }
+
 
   // function to navigate to a certain page once logged in
   const navigate = useNavigate();
+
 
   // sets the credentials entered by the user
   const [credentials, setCredentials] = useState({
@@ -25,13 +39,17 @@ function Login({ type }) {
     password: undefined
   })
 
+
   // call login functions from authcontext
   const { loading, error, dispatch } = useContext(AuthContext)
   
+
   // set the use state to what the user entered
   const handleChange = (e) => {
     setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }))
   }
+
+
 
   const handleClick = async (e) => {
    
@@ -40,21 +58,16 @@ function Login({ type }) {
     dispatch({ type: "LOGIN_START" });
     
     try {
-      const res = await axios.post("http://localhost:5500/api/auth/login", credentials, { withCredentials: false })
+      const res = await axios.post(post_url, credentials, { withCredentials: false })
+      dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
       
       // if admin then redirect to /admin i.e. localhost:3000/admin/
       if (type === "Admin") {
-        if (res.data.isAdmin) {
-          dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details })
           navigate("/admin")
-        } else {
-          dispatch({ type: "LOGIN_FAILURE", payload: { message: "You are not allowed" } })
-        }
       }
 
       // if not admin redirect to / i.e localhost:3000/
       else {
-        dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
         navigate("/");
       }
 
@@ -67,12 +80,12 @@ function Login({ type }) {
     <div className="AdminLogin">
 
       <div className="img-container">
-        <img src={type === "Admin"? teachURL : classURL} alt="" />
+        <img src={url} alt="" />
       </div>
 
       <div className="lContainer">
 
-        <h1>Welcome to {type === "Admin"? "Admin Portal" : "Student Portal"}!</h1>
+        <h1>Welcome to {type} Portal!</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
 
         <label htmlFor="username">Enter Username</label>

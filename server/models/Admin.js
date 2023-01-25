@@ -6,10 +6,13 @@ const AdminSchema = new mongoose.Schema (
             type: String,
             required: true
         },
-        // erpadmin23
         password: {
             type: String,
             required: true
+        },
+        isAdmin: {
+            type: Boolean,
+            default: true,
         }
     },
     { timestamps: true }

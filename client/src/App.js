@@ -192,8 +192,12 @@ function App() {
         {/* Main Routes */}
 
         {/* login page for main */}
-        <Route path="/login" element={
-          <Login type="Main" />
+        <Route path="/studentLogin" element={
+          <Login type="Student"/>
+        } />
+
+        <Route path="/facultyLogin" element={
+          <Login type="Faculty" />
         } />
 
         {/* dashboard of main */}
