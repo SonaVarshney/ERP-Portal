@@ -62,11 +62,11 @@ const AdminSidebar = ({ setOpen }) => {
 
                     <p className="title">Lists</p>
 
-                    {/* Takes you to list of all registered users */}
-                    <Link to="/admin/users" style={{ textDecoration: "none" }}>
+                    {/* Takes you to list of all registered students */}
+                    <Link to="/admin/students" style={{ textDecoration: "none" }}>
                         <li>
                             <PersonOutlineIcon className="icon" />
-                            <span>Users</span>
+                            <span>Students</span>
                         </li>
                     </Link>
 
@@ -97,10 +97,10 @@ const AdminSidebar = ({ setOpen }) => {
                     {/* Options under Create */}
 
                     <p className="title">Create</p>
-                    <Link to="/admin/users/new" style={{ textDecoration: "none" }}>
+                    <Link to="/admin/students/new" style={{ textDecoration: "none" }}>
                         <li>
                             <PersonAddIcon className="icon" />
-                            <span>User</span>
+                            <span>Student</span>
                         </li>
                     </Link>
 

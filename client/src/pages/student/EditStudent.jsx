@@ -9,7 +9,6 @@ import useFetch from "../../hooks/useFetch";
 import axios from "axios"
 
 import Navbar from "../../components/navbar/Navbar";
-import { roles, teams, integ_subteams, team_subteams } from "../../source/formsource/teamsAndRole"
 import AdminNavbar from "../../components/adminNavbar/AdminNavbar";
 
 const EditUser = ({ title, type }) => {
@@ -21,7 +20,7 @@ const EditUser = ({ title, type }) => {
   else
     id = location.pathname.split("/")[2];
 
-  const { data } = useFetch(`/users/${id}`)
+  const { data } = useFetch(`/students/${id}`)
   const [info, setInfo] = useState({});
   const [file, setFile] = useState("");
   const [sending, setSending] = useState(false)
@@ -29,6 +28,8 @@ const EditUser = ({ title, type }) => {
   useEffect(() => {
     setInfo(data)
   }, [data])
+
+  console.log(info)
 
   const navigate = useNavigate();
   const handleChange = (e) => {
@@ -57,7 +58,7 @@ const EditUser = ({ title, type }) => {
           ...info, profilePicture: url, cloud_id: public_id
         }
 
-        axios.put(`http://localhost:5500/api/users/${id}`, newuser, {
+        axios.put(`http://localhost:5500/api/students/${id}`, newuser, {
           withCredentials: false
         })
         navigate(-1)
@@ -67,7 +68,7 @@ const EditUser = ({ title, type }) => {
       }
     } else {
       try {
-        await axios.put(`http://localhost:5500/api/users/${id}`, info, { withCredentials: false })
+        await axios.put(`http://localhost:5500/api/students/${id}`, info, { withCredentials: false })
         navigate(-1)
       }
       catch (err) {
@@ -85,6 +86,7 @@ const EditUser = ({ title, type }) => {
           <h1>{title}</h1>
         </div>
         <div className="bottom">
+          <div className="right">
           <div className="left">
             <img
               src={
@@ -94,12 +96,8 @@ const EditUser = ({ title, type }) => {
               }
               alt=""
             />
-          </div>
 
-          <div className="right">
-            <form>
-
-              <div className="formInput">
+            <div className="formInput">
                 <label htmlFor="file">
                   Image: <DriveFolderUploadIcon className="icon" />
                 </label>
@@ -110,18 +108,44 @@ const EditUser = ({ title, type }) => {
                   style={{ display: "none" }}
                 />
               </div>
+          </div>
+
+            <form>
 
               {type === "Admin" && <div className="formInput">
-                <label>Taken as GEC</label>
-                <select
-                  id="isGEC"
+                <label>Username</label>
+                <input
                   onChange={handleChange}
-                >
-                  <option value={false}>-</option>
-                  <option value={false}>No</option>
-                  <option value={true}>Yes</option>
-                </select>
+                  type="text"
+                  placeholder="Enter username"
+                  id="username"
+                  value={info.username}
+                />
               </div>}
+
+              {type === "Admin" && <div className="formInput">
+                <label>Enrollment Number</label>
+                <input
+                  onChange={handleChange}
+                  type="text"
+                  placeholder="Enter enrollment number"
+                  id="enroll"
+                  value={info.enroll}
+                />
+              </div>}
+
+              <div className="formInput">
+                <label>Gender</label>
+                <select
+                  id="gender"
+                  onChange={handleChange}
+                  value={info.gender}
+                >
+                  <option value={0}>-</option>
+                  <option value={"Female"}>Female</option>
+                  <option value={"Male"}>Male</option>
+                </select>
+              </div>
 
               <div className="formInput">
                 <label>Name</label>
@@ -150,42 +174,53 @@ const EditUser = ({ title, type }) => {
                 <input
                   onChange={handleChange}
                   type="text"
-                  placeholder="Enter phone number"
+                  placeholder="Enter student's phone number"
                   id="phone"
-                  value={info.phone}
+                  value={info.studentPhone}
                 />
               </div>
 
-              {type === "Admin" && <div className="formInput">
-                <label>Username</label>
+              <div className="formInput">
+                <label>Address</label>
                 <input
                   onChange={handleChange}
                   type="text"
-                  placeholder="Enter username"
-                  id="username"
-                  value={info.username}
+                  placeholder="Enter student's address"
+                  id="phone"
+                  value={info.studentAddress}
+                />
+              </div>
+
+              <div className="formInput">
+                <label>Date of Birth</label>
+                <input
+                  onChange={handleChange}
+                  type="text"
+                  placeholder="Enter student's date of birth"
+                  id="phone"
+                  value={info.dob}
+                />
+              </div>
+
+              {type==="Admin" && <div className="formInput">
+                <label>Department</label>
+                <input
+                  onChange={handleChange}
+                  type="text"
+                  placeholder="Enter department"
+                  id="branch"
+                  value={info.department}
                 />
               </div>}
 
-              <div className="formInput">
-                <label>Branch</label>
-                <input
-                  onChange={handleChange}
-                  type="text"
-                  placeholder="Enter branch"
-                  id="branch"
-                  value={info.branch}
-                />
-              </div>
-
               {type === "Admin" && <div className="formInput">
-                <label>Folder Link</label>
+                <label>Section</label>
                 <input
                   onChange={handleChange}
                   type="text"
-                  placeholder="Enter user's folder"
+                  placeholder="Enter student's section"
                   id="folderLink"
-                  value={info.folderLink}
+                  value={info.section}
                 />
               </div>}
 
@@ -204,63 +239,10 @@ const EditUser = ({ title, type }) => {
                 </select>
               </div>
 
-              {type === "Admin" && <div className="formInput">
-                <label>Choose a Team</label>
-                <select
-                  id="team"
-                  onChange={handleChange}
-                  value={info.team}
-                >
-                  {teams.map((t) => (
-                    <option key={t.id} value={t.team}>{t.team}</option>
-                  ))}
-                </select>
-              </div>}
-
-              {info.team === "Integration Team" && type === "Admin" && <div className="formInput">
-                <label>Choose a Sub Team</label>
-                <select
-                  id="subteam"
-                  onChange={handleChange}
-                  value={info.subteam}
-                >
-                  {integ_subteams.map((st) => (
-                    <option key={st.id} value={st.subteam}>{st.subteam}</option>
-                  ))}
-                </select>
-              </div>}
-
-              {
-                type === "Admin" && (info.team === "Adira" || info.team === "Cognito" || info.team === "Eudaimonia" || info.team === "Inayat" || info.team === "Pejas" || info.team === "Sashakt Drishti")
-                && <div className="formInput">
-                  <label>Choose a Sub Team</label>
-                  <select
-                    id="subteam"
-                    value={info.subteam}
-                    onChange={handleChange}
-                  >
-                    {team_subteams.map((st) => (
-                      <option key={st.id} value={st.subteam}>{st.subteam}</option>
-                    ))}
-                  </select>
-                </div>
-              }
-
-              {type === "Admin" && <div className="formInput">
-                <label>Choose a Role</label>
-                <select
-                  id="role"
-                  onChange={handleChange}
-                  value={info.role}
-                >
-                  {roles.map((r) => (
-                    <option key={r.id} value={r.role}>{r.role}</option>
-                  ))}
-                </select>
-              </div>}
 
             </form>
             <button disabled={sending} id="submit" onClick={handleClick}>Edit User</button>
+          
           </div>
         </div>
       </div>

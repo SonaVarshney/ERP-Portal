@@ -21,7 +21,7 @@ const Single = ({ type }) => {
     id = location.pathname.split("/")[2];
   else
     id = location.pathname.split("/")[3];
-  const { data } = useFetch(`/users/${id}`)
+  const { data } = useFetch(`/students/${id}`)
   
   // used to navigate to a certain link
   const navigate = useNavigate();
@@ -53,8 +53,8 @@ const Single = ({ type }) => {
                 
                 {/* ID */}
                 <div className="detailItem">
-                  <span className="itemKey">ID:</span>
-                  <span className="itemValue">{data._id}</span>
+                  <span className="itemKey">Enrollment Number:</span>
+                  <span className="itemValue">{data.enroll}</span>
                 </div>
                 
                 {/* Username */}
@@ -72,13 +72,19 @@ const Single = ({ type }) => {
                 {/* Phone Number */}
                 <div className="detailItem">
                   <span className="itemKey">Phone Number:</span>
-                  <span className="itemValue">{data.phone}</span>
+                  <span className="itemValue">{data.studentPhone}</span>
+                </div>
+
+                {/* Address */}
+                <div className="detailItem">
+                  <span className="itemKey">Address:</span>
+                  <span className="itemValue">{data.studentAddress}</span>
                 </div>
                 
-                {/* Branch */}
+                {/* Department */}
                 <div className="detailItem">
-                  <span className="itemKey">Branch:</span>
-                  <span className="itemValue">{data.branch}</span>
+                  <span className="itemKey">Department:</span>
+                  <span className="itemValue">{data.department}</span>
                 </div>
 
                 {/* Year */}
@@ -87,28 +93,22 @@ const Single = ({ type }) => {
                   <span className="itemValue">{data.year}</span>
                 </div>
 
-                {/* Role */}
+                {/* Gender */}
                 <div className="detailItem">
-                  <span className="itemKey">Role:</span>
-                  <span className="itemValue">{data.role}</span>
+                  <span className="itemKey">Gender:</span>
+                  <span className="itemValue">{data.gender}</span>
                 </div>
 
-                {/* Team */}
+                {/* Section */}
                 <div className="detailItem">
-                  <span className="itemKey">Team:</span>
-                  <span className="itemValue">{data.team}</span>
+                  <span className="itemKey">Section:</span>
+                  <span className="itemValue">{data.section}</span>
                 </div>
 
-                {/* Sub Team */}
+                {/* Date of Birth */}
                 <div className="detailItem">
-                  <span className="itemKey">Sub Team:</span>
-                  <span className="itemValue">{data.subteam}</span>
-                </div>
-
-                {/* GEC Course or not */}
-                <div className="detailItem">
-                  <span className="itemKey">GEC:</span>
-                  <span className="itemValue">{(data.isGEC) ? "Yes" : "No"}</span>
+                  <span className="itemKey">Date of Birth:</span>
+                  <span className="itemValue">{data.dob}</span>
                 </div>
               </div>
             </div>
@@ -116,8 +116,6 @@ const Single = ({ type }) => {
             {/* Takes to Edit Page */}
             <EditIcon style={{ height: "20px", paddingRight: "10px", cursor: "pointer" }} onClick={() => navigate("edit")} />
             
-            {/* Folder Link */}
-            <FolderIcon style={{ height: "20px", cursor: "pointer" }} />
           </div>
         </div>
       </div>

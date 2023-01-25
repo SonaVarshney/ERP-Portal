@@ -1,5 +1,4 @@
-export const userColumns = [
-    { field: "_id", headerName: "ID", width: 70 },
+export const studentColumns = [
     {
         field: "user",
         headerName: "User",
@@ -24,18 +23,18 @@ export const userColumns = [
         width: 150,
     },
     {
-        field: "role",
-        headerName: "Role",
+        field: "enroll",
+        headerName: "Enroll No",
         width: 100,
     },
     {
-        field: "team",
-        headerName: "Team",
+        field: "gender",
+        headerName: "Gender",
         width: 100,
     },
     {
-        field: "subteam",
-        headerName: "Sub Team",
+        field: "department",
+        headerName: "Department",
         width: 100,
     },
     {
@@ -44,18 +43,23 @@ export const userColumns = [
         width: 100,
     },
     {
-        field: "branch",
-        headerName: "Branch",
+        field: "section",
+        headerName: "Section",
         width: 100,
     },
     {
-        field: "phone",
+        field: "studentPhone",
         headerName: "Phone",
         width: 100,
     },
     {
-        field: "isGEC",
-        headerName: "GEC",
+        field: "studentAddress",
+        headerName: "Address",
+        width: 100,
+    },
+    {
+        field: "dob",
+        headerName: "Birth Date",
         width: 100,
     }
 ];

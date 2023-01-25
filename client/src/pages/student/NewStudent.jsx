@@ -1,5 +1,7 @@
 import "../../style/form.scss";
 
+// choice for gender, year, department
+
 import DriveFolderUploadIcon from '@mui/icons-material/DriveFolderUpload';
 
 import { useNavigate } from "react-router-dom";
@@ -7,7 +9,6 @@ import { useState } from "react";
 
 import axios from "axios"
 
-import { roles, teams, integ_subteams, team_subteams } from "../../source/formsource/teamsAndRole"
 import AdminNavbar from "../../components/adminNavbar/AdminNavbar";
 
 const NewUser = ({ inputs, title }) => {
@@ -41,7 +42,7 @@ const NewUser = ({ inputs, title }) => {
           ...info, profilePicture: url, cloud_id: public_id
         }
 
-        axios.post("http://localhost:5500/api/auth/register", newuser, {
+        axios.post("http://localhost:5500/api/students/registerStudent", newuser, {
           withCredentials: false
         })
         navigate(-1)
@@ -52,7 +53,7 @@ const NewUser = ({ inputs, title }) => {
     
     } else {
       try {
-        await axios.post("http://localhost:5500/api/auth/register", info)
+        await axios.post("http://localhost:5500/api/students/registerStudent", info)
         navigate(-1)
       }
       catch (err) {
@@ -83,7 +84,7 @@ const NewUser = ({ inputs, title }) => {
               alt=""
             />
 
-            <div className="formInput">
+              <div className="formInput">
                 <label htmlFor="file">
                   Image: <DriveFolderUploadIcon className="icon" />
                 </label>
@@ -100,14 +101,14 @@ const NewUser = ({ inputs, title }) => {
             <form>
 
               <div className="formInput">
-                <label>Taken as GEC</label>
+                <label>Gender</label>
                 <select
-                  id="isGEC"
+                  id="gender"
                   onChange={handleChange}
                 >
-                  <option value={false}>-</option>
-                  <option value={false}>No</option>
-                  <option value={true}>Yes</option>
+                  <option value={0}>-</option>
+                  <option value={"Female"}>Female</option>
+                  <option value={"Male"}>Male</option>
                 </select>
               </div>
 
@@ -130,61 +131,24 @@ const NewUser = ({ inputs, title }) => {
                   onChange={handleChange}
                 >
                   <option value={0}>-</option>
-                  <option value={1}>1st</option>
-                  <option value={2}>2nd</option>
-                  <option value={3}>3rd</option>
-                  <option value={4}>4th</option>
+                  <option value={"1st"}>1st</option>
+                  <option value={"2nd"}>2nd</option>
+                  <option value={"3rd"}>3rd</option>
+                  <option value={"4th"}>4th</option>
                 </select>
               </div>
 
               <div className="formInput">
-                <label>Choose a Team</label>
+                <label>Choose a Department</label>
                 <select
-                  id="team"
+                  id="department"
                   onChange={handleChange}
                 >
-                  {teams.map((t) => (
-                    <option key={t.id} value={t.team}>{t.team}</option>
-                  ))}
-                </select>
-              </div>
-
-              {info.team === "Integration Team" && <div className="formInput">
-                <label>Choose a Sub Team</label>
-                <select
-                  id="subteam"
-                  onChange={handleChange}
-                >
-                  {integ_subteams.map((st) => (
-                    <option key={st.id} value={st.subteam}>{st.subteam}</option>
-                  ))}
-                </select>
-              </div>}
-
-              {
-                (info.team === "Adira" || info.team === "Cognito" || info.team === "Eudaimonia" || info.team === "Inayat" || info.team === "Pejas" || info.team === "Sashakt Drishti")
-                && <div className="formInput">
-                  <label>Choose a Sub Team</label>
-                  <select
-                    id="subteam"
-                    onChange={handleChange}
-                  >
-                    {team_subteams.map((st) => (
-                      <option key={st.id} value={st.subteam}>{st.subteam}</option>
-                    ))}
-                  </select>
-                </div>
-              }
-
-              <div className="formInput">
-                <label>Choose a Role</label>
-                <select
-                  id="role"
-                  onChange={handleChange}
-                >
-                  {roles.map((r) => (
-                    <option key={r.id} value={r.role}>{r.role}</option>
-                  ))}
+                  <option value={"-"}> </option>
+                  <option value={"Computer Science & Engineering"}>Computer Science & Engineering</option>
+                  <option value={"Information Technology"}>Information Technology</option>
+                  <option value={"Mechanical & Automation Engineering"}>Mechanical & Automation Engineering</option>
+                  <option value={"Electronics & Communication Engineering"}>Electronics & Communication Engineering</option>
                 </select>
               </div>
 

@@ -14,20 +14,20 @@ import { DarkModeContext } from "./context/darkModeContext";
 
 
 // Datatable Columns
-import { userColumns } from "./source/datatablesource/userColumns";
+import { studentColumns } from "./source/datatablesource/studentColumns";
 import { taskColumns } from "./source/datatablesource/taskColumns";
 import { updateColumns } from "./source/datatablesource/updateColumns";
 
 
 // Form Inputs
-import { userInputs } from "./source/formsource/userInputs"
+import { studentInputs } from "./source/formsource/studentInputs"
 import { taskInputs } from "./source/formsource/taskInputs"
 import { updateInputs } from "./source/formsource/updateInputs"
 import { eventInputs } from './source/formsource/eventInputs';
 
 
 // Admin Pages
-import NewUser from "./pages/user/NewUser";
+import NewStudent from "./pages/student/NewStudent";
 import NewTask from "./pages/task/NewTask";
 import NewUpdate from "./pages/update/NewUpdate"
 import EditTask from './pages/task/EditTask';
@@ -43,10 +43,10 @@ import EditEvent from './pages/event/EditEvent';
 // Common Pages
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login"
-import Single from "./pages/single/Single"
+import SingleStudent from "./pages/singleStudent/SingleStudent"
 import List from "./pages/list/List"
 import Landing from "./pages/Landing/Landing";
-import EditUser from './pages/user/EditUser';
+import EditStudent from './pages/student/EditStudent';
 
 
 function App() {
@@ -92,33 +92,33 @@ function App() {
             </RequireAuth>
         } />
 
-        {/* routes for users */}
+        {/* routes for students */}
 
-        {/* list of users */}
-        <Route path="/admin/users" element={
+        {/* list of students */}
+        <Route path="/admin/students" element={
           <RequireAuth>
-              <List column={userColumns} name="User" type="Admin" />
+              <List column={studentColumns} name="Student" type="Admin" />
           </RequireAuth>
         } />
 
-        {/* single page for user */}
-          <Route path="/admin/users/:userId" element={
+        {/* single page for student */}
+          <Route path="/admin/students/:studentId" element={
             <RequireAuth>
-              <Single type="Admin" />
+              <SingleStudent type="Admin" />
             </RequireAuth>
         } />
 
-        {/* edit page for user */}
-        <Route path="/admin/users/:userId/edit" element={
+        {/* edit page for student */}
+        <Route path="/admin/students/:studentId/edit" element={
           <RequireAuth>
-            <EditUser title="Update User" type="Admin" />
+            <EditStudent title="Update Student" type="Admin" />
           </RequireAuth>
         } />
 
-        {/* create user page */}
-        <Route path="/admin/users/new" element={
+        {/* create user student */}
+        <Route path="/admin/students/new" element={
           <RequireAuth>
-            <NewUser inputs={userInputs} title="Add New User" />
+            <NewStudent inputs={studentInputs} title="Add New Student" />
           </RequireAuth>
         } />
 
@@ -178,12 +178,6 @@ function App() {
             </RequireAuth>
         } />
 
-        {/* single page for users */}
-        <Route path="/admin/events/:eventId" element={
-            <RequireAuth>
-                <Single />
-            </RequireAuth>
-        } />
 
 
 
@@ -210,14 +204,14 @@ function App() {
         {/* profile page */}
         <Route path="/users/:id" element={
             <RequireAuth>
-                <Single type="Main" />
+                <SingleStudent type="Main" />
             </RequireAuth>
         } />
 
         {/* edit profile page */}
         <Route path="/users/:id/edit" element={
             <RequireAuth>
-                <EditUser title="Edit Profile" type="Main" />
+                <EditStudent title="Edit Profile" type="Main" />
             </RequireAuth>
         } />
 

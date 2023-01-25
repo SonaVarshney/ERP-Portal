@@ -6,7 +6,6 @@ import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import useFetch from "../../hooks/useFetch";
 
-import { roles } from "../../source/formsource/teamsAndRole"
 import AdminNavbar from "../../components/adminNavbar/AdminNavbar";
 
 const EditTask = ({ title }) => {
@@ -93,23 +92,6 @@ const EditTask = ({ title }) => {
                   value={info.desc}
                   placeholder="Add task desciption"
                 />
-              </div>
-
-              <div className="formInput">
-                <label>Assigned To</label>
-                
-                {/* Select bar */}
-                <select
-                  id="assignedTo"
-                  onChange={handleChange}
-                  value={info.assignedTo}
-                >
-                  {roles.map((r) => (
-                    <option key={r.id} value={r.value}>{r.role}</option>
-                  ))}
-
-                </select>
-
               </div>
             </form>
 

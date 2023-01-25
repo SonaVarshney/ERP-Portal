@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
 
-import { roles } from "../../source/formsource/teamsAndRole"
 import AdminNavbar from "../../components/adminNavbar/AdminNavbar";
 
 const NewTask = ({ inputs, title }) => {
@@ -60,19 +59,6 @@ const NewTask = ({ inputs, title }) => {
                   />
                 </div>
               ))}
-              <div className="formInput">
-                <label>Assigned To</label>
-                <select
-                  id="assignedTo"
-                  onChange={handleChange}
-                >
-                  {roles.map((r) => (
-                    <option key={r.id} value={r.value}>{r.role}</option>
-                  ))}
-
-                </select>
-
-              </div>
             </form>
             <button onClick={handleClick} className="form-btn">Create Task</button>
           </div>

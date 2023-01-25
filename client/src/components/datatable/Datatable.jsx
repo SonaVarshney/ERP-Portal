@@ -32,7 +32,6 @@ const Datatable = ({ column, name, type }) => {
     path = location.pathname.split("/")[1];
 
 
-
   // fetching data using the path
   const { data } = useFetch(`/${path}`)
 
@@ -90,17 +89,10 @@ const Datatable = ({ column, name, type }) => {
 
           <div className="cellAction">
 
-            {/* folder link to user's folders */}
-            {path === "users" &&
-              <a href={params.row.folderLink} style={{ textDecoration: "none" }} rel="noopener" target='_blank'>
-                < div className="viewButton">Folder Link</div>
-              </a>
-            }
-
 
             {/* view will take you to Single page in case of users and open modals in case of tasks and updates */}
             {
-            (path === "users") ? 
+            (path === "students" || path === "faculties") ? 
               (
                 <>
                 {/* params.row._id will give us the id of the data entry at particular row we clicked */}
