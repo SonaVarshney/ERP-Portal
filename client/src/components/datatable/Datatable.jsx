@@ -48,9 +48,6 @@ const Datatable = ({ column, name, type }) => {
 
   // feeding the data when page rerenders or data changes
   useEffect(() => {
-    if (name === "User")
-      setList(data.filter((d) => d.isAdmin === false));
-    else
       setList(data)
   }, [data])
 
@@ -135,7 +132,7 @@ const Datatable = ({ column, name, type }) => {
       
       {/* Title will be shown based on which table is */}
       <div className="datatableTitle">
-        {name}s
+        {name}
       </div>
 
       {/* Datagrid element */}

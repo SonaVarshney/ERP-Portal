@@ -15,6 +15,7 @@ import { DarkModeContext } from "./context/darkModeContext";
 
 // Datatable Columns
 import { studentColumns } from "./source/datatablesource/studentColumns";
+import { facultyColumns } from "./source/datatablesource/facultyColumns";
 import { taskColumns } from "./source/datatablesource/taskColumns";
 import { updateColumns } from "./source/datatablesource/updateColumns";
 
@@ -22,12 +23,14 @@ import { updateColumns } from "./source/datatablesource/updateColumns";
 // Form Inputs
 import { studentInputs } from "./source/formsource/studentInputs"
 import { taskInputs } from "./source/formsource/taskInputs"
+import { facultyInputs } from "./source/formsource/facultyInputs"
 import { updateInputs } from "./source/formsource/updateInputs"
 import { eventInputs } from './source/formsource/eventInputs';
 
 
 // Admin Pages
 import NewStudent from "./pages/student/NewStudent";
+import NewFaculty from "./pages/faculty/NewFaculty";
 import NewTask from "./pages/task/NewTask";
 import NewUpdate from "./pages/update/NewUpdate"
 import EditTask from './pages/task/EditTask';
@@ -44,9 +47,11 @@ import EditEvent from './pages/event/EditEvent';
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login"
 import SingleStudent from "./pages/singleStudent/SingleStudent"
+import SingleFaculty from "./pages/singleFaculty/SingleFaculty"
 import List from "./pages/list/List"
 import Landing from "./pages/Landing/Landing";
 import EditStudent from './pages/student/EditStudent';
+import EditFaculty from './pages/faculty/EditFaculty';
 
 
 function App() {
@@ -79,6 +84,8 @@ function App() {
 
         {/* Admin Routes */}
 
+
+
         {/* login page for admin */}
         <Route path="/adminLogin" element={
             <Login type="Admin" />
@@ -91,6 +98,8 @@ function App() {
                 <Home type="Admin" />
             </RequireAuth>
         } />
+
+
 
         {/* routes for students */}
 
@@ -123,6 +132,39 @@ function App() {
         } />
 
 
+
+        {/* routes for faculties */}
+
+        {/* list of faculties */}
+        <Route path="/admin/faculties" element={
+          <RequireAuth>
+              <List column={facultyColumns} name="Faculty" type="Admin" />
+          </RequireAuth>
+        } />
+
+        {/* single page for faculty */}
+          <Route path="/admin/faculties/:facultyId" element={
+            <RequireAuth>
+              <SingleFaculty type="Admin" />
+            </RequireAuth>
+        } />
+
+        {/* edit page for student */}
+        <Route path="/admin/faculties/:facultyId/edit" element={
+          <RequireAuth>
+            <EditFaculty title="Update Faculty" type="Admin" />
+          </RequireAuth>
+        } />
+
+        {/* create faculty */}
+        <Route path="/admin/faculties/new" element={
+          <RequireAuth>
+            <NewFaculty inputs={facultyInputs} title="Add New Faculty" />
+          </RequireAuth>
+        } />
+
+
+
         {/* routes for tasks */}
 
         {/* list of tasks */}
@@ -147,6 +189,7 @@ function App() {
         } />
 
 
+
         {/* routes for updates */}
         <Route path="/admin/updates" element={
             <RequireAuth>
@@ -169,6 +212,7 @@ function App() {
                 </RequireAuth>
             }
         />
+
 
         {/* routes for events */}
 
@@ -201,17 +245,31 @@ function App() {
             </RequireAuth>
         } />
 
-        {/* profile page */}
-        <Route path="/users/:id" element={
+        {/* profile page for student */}
+        <Route path="/students/:id" element={
             <RequireAuth>
                 <SingleStudent type="Main" />
             </RequireAuth>
         } />
 
-        {/* edit profile page */}
-        <Route path="/users/:id/edit" element={
+        {/* edit profile page for faculty*/}
+        <Route path="/students/:id/edit" element={
             <RequireAuth>
                 <EditStudent title="Edit Profile" type="Main" />
+            </RequireAuth>
+        } />
+
+        {/* profile page for faculty */}
+        <Route path="/faculties/:id" element={
+            <RequireAuth>
+                <SingleFaculty type="Main" />
+            </RequireAuth>
+        } />
+
+        {/* edit profile page for faculty */}
+        <Route path="/faculties/:id/edit" element={
+            <RequireAuth>
+                <EditFaculty title="Edit Profile" type="Main" />
             </RequireAuth>
         } />
 

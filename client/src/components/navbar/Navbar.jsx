@@ -19,6 +19,13 @@ const Navbar = () => {
   const { user } = useContext(AuthContext)
   
   const { data } = useFetch(`/updates`)
+  let path
+
+  if(user.isFaculty) {
+    path = "faculties"
+  } else if(user.isStudent) {
+    path = "students"
+  }
   
   // use states for setting notifications, opening notification popup and opening side bar
   const [notifs, setNotifs] = useState([])
@@ -98,7 +105,7 @@ const Navbar = () => {
               src={user.profilePicture || "https://i.ibb.co/MBtjqXQ/no-avatar.gif"}
               alt=""
               className="avatar"
-              onClick={() => navigate(`/users/${user._id}`)}
+              onClick={() => navigate(`/${path}/${user._id}`)}
             />
           </div>
         </div>

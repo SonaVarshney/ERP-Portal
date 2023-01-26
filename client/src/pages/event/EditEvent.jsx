@@ -27,7 +27,6 @@ const EditEvent = ({ inputs, title }) => {
     const s = new Date(info.startDate);
     const e = new Date(info.endDate)
 
-    console.log(info)
 
     const handleChange = (e) => {
         setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));

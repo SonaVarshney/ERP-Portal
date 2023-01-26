@@ -20,7 +20,7 @@ const Single = ({ type }) => {
     id = location.pathname.split("/")[2];
   else
     id = location.pathname.split("/")[3];
-  const { data } = useFetch(`/students/${id}`)
+  const { data } = useFetch(`/faculties/${id}`)
   
   // used to navigate to a certain link
   const navigate = useNavigate();
@@ -52,7 +52,7 @@ const Single = ({ type }) => {
                 
                 {/* ID */}
                 <div className="detailItem">
-                  <span className="itemKey">Enrollment Number:</span>
+                  <span className="itemKey">Registration Number:</span>
                   <span className="itemValue">{data.enroll}</span>
                 </div>
                 
@@ -71,13 +71,13 @@ const Single = ({ type }) => {
                 {/* Phone Number */}
                 <div className="detailItem">
                   <span className="itemKey">Phone Number:</span>
-                  <span className="itemValue">{data.studentPhone}</span>
+                  <span className="itemValue">{data.facultyPhone}</span>
                 </div>
 
                 {/* Address */}
                 <div className="detailItem">
                   <span className="itemKey">Address:</span>
-                  <span className="itemValue">{data.studentAddress}</span>
+                  <span className="itemValue">{data.facultyAddress}</span>
                 </div>
                 
                 {/* Department */}
@@ -86,10 +86,10 @@ const Single = ({ type }) => {
                   <span className="itemValue">{data.department}</span>
                 </div>
 
-                {/* Year */}
+                {/* Joining Year */}
                 <div className="detailItem">
-                  <span className="itemKey">Year:</span>
-                  <span className="itemValue">{data.year}</span>
+                  <span className="itemKey">Joining Year:</span>
+                  <span className="itemValue">{data.joiningYear}</span>
                 </div>
 
                 {/* Gender */}
@@ -98,10 +98,10 @@ const Single = ({ type }) => {
                   <span className="itemValue">{data.gender}</span>
                 </div>
 
-                {/* Section */}
+                {/* Designation */}
                 <div className="detailItem">
-                  <span className="itemKey">Section:</span>
-                  <span className="itemValue">{data.section}</span>
+                  <span className="itemKey">Designation:</span>
+                  <span className="itemValue">{data.designation}</span>
                 </div>
 
                 {/* Date of Birth */}

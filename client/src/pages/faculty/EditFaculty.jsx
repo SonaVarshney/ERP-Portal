@@ -11,7 +11,7 @@ import axios from "axios"
 import Navbar from "../../components/navbar/Navbar";
 import AdminNavbar from "../../components/adminNavbar/AdminNavbar";
 
-const EditUser = ({ title, type }) => {
+const EditFaculty = ({ title, type }) => {
 
   const location = useLocation();
   let id;
@@ -20,7 +20,7 @@ const EditUser = ({ title, type }) => {
   else
     id = location.pathname.split("/")[2];
 
-  const { data } = useFetch(`/students/${id}`)
+  const { data } = useFetch(`/faculties/${id}`)
   const [info, setInfo] = useState({});
   const [file, setFile] = useState("");
   const [sending, setSending] = useState(false)
@@ -57,7 +57,7 @@ const EditUser = ({ title, type }) => {
           ...info, profilePicture: url, cloud_id: public_id
         }
 
-        axios.put(`http://localhost:5500/api/students/${id}`, newuser, {
+        axios.put(`http://localhost:5500/api/faculties/${id}`, newuser, {
           withCredentials: false
         })
         navigate(-1)
@@ -67,7 +67,7 @@ const EditUser = ({ title, type }) => {
       }
     } else {
       try {
-        await axios.put(`http://localhost:5500/api/students/${id}`, info, { withCredentials: false })
+        await axios.put(`http://localhost:5500/api/faculties/${id}`, info, { withCredentials: false })
         navigate(-1)
       }
       catch (err) {
@@ -123,11 +123,11 @@ const EditUser = ({ title, type }) => {
               </div>}
 
               {type === "Admin" && <div className="formInput">
-                <label>Enrollment Number</label>
+                <label>Registration Number</label>
                 <input
                   onChange={handleChange}
                   type="text"
-                  placeholder="Enter enrollment number"
+                  placeholder="Enter registration number"
                   id="enroll"
                   value={info.enroll}
                 />
@@ -173,9 +173,9 @@ const EditUser = ({ title, type }) => {
                 <input
                   onChange={handleChange}
                   type="text"
-                  placeholder="Enter student's phone number"
-                  id="studentPhone"
-                  value={info.studentPhone}
+                  placeholder="Enter faculty's phone number"
+                  id="facultyPhone"
+                  value={info.facultyPhone}
                 />
               </div>
 
@@ -184,9 +184,9 @@ const EditUser = ({ title, type }) => {
                 <input
                   onChange={handleChange}
                   type="text"
-                  placeholder="Enter student's address"
-                  id="studentAddress"
-                  value={info.studentAddress}
+                  placeholder="Enter faculty's address"
+                  id="facultyAddress"
+                  value={info.facultyAddress}
                 />
               </div>
 
@@ -195,14 +195,14 @@ const EditUser = ({ title, type }) => {
                 <input
                   onChange={handleChange}
                   type="text"
-                  placeholder="Enter student's date of birth"
+                  placeholder="Enter faculty's date of birth"
                   id="dob"
                   value={info.dob}
                 />
               </div>
 
               {type==="Admin" && <div className="formInput">
-                <label>Department</label>
+              <label>Department</label>
                 <select
                   id="department"
                   onChange={handleChange}
@@ -216,35 +216,35 @@ const EditUser = ({ title, type }) => {
                 </select>
               </div>}
 
-              {type === "Admin" && <div className="formInput">
-                <label>Section</label>
+              <div className="formInput">
+                <label>Joining Year</label>
                 <input
                   onChange={handleChange}
                   type="text"
-                  placeholder="Enter student's section"
-                  id="section"
-                  value={info.section}
+                  placeholder="Enter faculty's joining year"
+                  id="joiningYear"
+                  value={info.joiningYear}
                 />
-              </div>}
-
-              <div className="formInput">
-                <label>Year</label>
-                <select
-                  id="year"
-                  onChange={handleChange}
-                  value={info.year}
-                >
-                  <option value={0}></option>
-                  <option value="1st">1st</option>
-                  <option value="2nd">2nd</option>
-                  <option value="3rd">3rd</option>
-                  <option value="4th">4th</option>
-                </select>
               </div>
+
+              {type==="Admin" && <div className="formInput">
+                <label>Designation</label>
+                <select
+                  id="designation"
+                  onChange={handleChange}
+                  value={info.designation}
+                >
+                  <option value={"none"}>none</option>
+                  <option value={"PHD Scholar"}>PHD Scholar</option>
+                  <option value={"Assistant Professor"}>Assistant Professor</option>
+                  <option value={"Professor"}>Professor</option>
+                  <option value={"Doctor"}>Doctor</option>
+                </select>
+              </div>}
 
 
             </form>
-            <button disabled={sending} id="submit" onClick={handleClick}>Edit Student</button>
+            <button disabled={sending} id="submit" onClick={handleClick}>Edit User</button>
           
           </div>
         </div>
@@ -253,4 +253,4 @@ const EditUser = ({ title, type }) => {
   );
 };
 
-export default EditUser;
+export default EditFaculty;

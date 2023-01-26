@@ -1,6 +1,6 @@
 import "../../style/form.scss";
 
-// choice for gender, year, department
+// choice for gender, designation, department
 
 import DriveFolderUploadIcon from '@mui/icons-material/DriveFolderUpload';
 
@@ -11,7 +11,7 @@ import axios from "axios"
 
 import AdminNavbar from "../../components/adminNavbar/AdminNavbar";
 
-const NewUser = ({ inputs, title }) => {
+const NewFaculty = ({ inputs, title }) => {
   
   const [file, setFile] = useState("");
   const [info, setInfo] = useState({});
@@ -42,7 +42,7 @@ const NewUser = ({ inputs, title }) => {
           ...info, profilePicture: url, cloud_id: public_id
         }
 
-        axios.post("http://localhost:5500/api/students/registerStudent", newuser, {
+        axios.post("http://localhost:5500/api/faculties/registerFaculty", newuser, {
           withCredentials: false
         })
         navigate(-1)
@@ -53,7 +53,7 @@ const NewUser = ({ inputs, title }) => {
     
     } else {
       try {
-        await axios.post("http://localhost:5500/api/students/registerStudent", info)
+        await axios.post("http://localhost:5500/api/faculties/registerFaculty", info)
         navigate(-1)
       }
       catch (err) {
@@ -125,16 +125,16 @@ const NewUser = ({ inputs, title }) => {
               ))}
 
               <div className="formInput">
-                <label>Year</label>
+                <label>Designation</label>
                 <select
-                  id="year"
+                  id="designation"
                   onChange={handleChange}
                 >
-                  <option value={0}>-</option>
-                  <option value={"1st"}>1st</option>
-                  <option value={"2nd"}>2nd</option>
-                  <option value={"3rd"}>3rd</option>
-                  <option value={"4th"}>4th</option>
+                  <option value={"none"}>none</option>
+                  <option value={"PHD Scholar"}>PHD Scholar</option>
+                  <option value={"Assistant Professor"}>Assistant Professor</option>
+                  <option value={"Professor"}>Professor</option>
+                  <option value={"Doctor"}>Doctor</option>
                 </select>
               </div>
 
@@ -154,7 +154,7 @@ const NewUser = ({ inputs, title }) => {
 
             </form>
             <div className="submitButton">
-              <button onClick={handleClick} className="form-btn">Create Student</button>
+              <button onClick={handleClick} className="form-btn">Create Faculty</button>
             </div>
           </div>
         </div>
@@ -163,4 +163,4 @@ const NewUser = ({ inputs, title }) => {
   );
 };
 
-export default NewUser;
+export default NewFaculty;

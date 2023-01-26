@@ -58,6 +58,22 @@ const StudentSchema = new mongoose.Schema(
     username: {
       type: String,
       required: true
+    },
+    isAdmin: {
+      type: Boolean,
+      default: false,
+    },
+    isStudent: {
+      type: Boolean,
+      default: true
+    },
+    isFaculty: {
+      type: Boolean,
+      default: false
+    },
+    isCR: {
+      type: Boolean,
+      default: false
     }
   },
   { timestamps: true }

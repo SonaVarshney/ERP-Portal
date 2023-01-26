@@ -26,7 +26,6 @@ const NewUpdate = ({ inputs }) => {
     }
   }
 
-  console.log(info)
 
   return (
     <div className="new">

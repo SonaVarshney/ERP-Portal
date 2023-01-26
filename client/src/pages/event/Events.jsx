@@ -42,7 +42,6 @@ const Events = () => {
         if (e.target.className === "rbc-event-content") {
             const event = data.filter((item) => { return item["name"] === e.target.title }
             );
-            console.log(event)
             setClickedEvent(event[0]);
             setOpenModal(true)
         }

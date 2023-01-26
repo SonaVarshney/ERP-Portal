@@ -52,7 +52,6 @@ const NewEvent = ({ inputs, title }) => {
         const newevent = {
           ...info, poster: url, cloud_id: public_id, startDate: start, endDate: end
         }
-        console.log(newevent)
         axios.post("http://localhost:5500/api/events", newevent, { withCredentials: false })
         navigate(-1)
 
@@ -88,7 +87,6 @@ const NewEvent = ({ inputs, title }) => {
     setOpenModal(true)
   }
 
-  console.log(list)
 
   return (
 

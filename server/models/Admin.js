@@ -13,6 +13,14 @@ const AdminSchema = new mongoose.Schema (
         isAdmin: {
             type: Boolean,
             default: true,
+        },
+        isStudent: {
+            type: Boolean,
+            default: false
+        },
+        isFaculty: {
+            type: Boolean,
+            default: false
         }
     },
     { timestamps: true }

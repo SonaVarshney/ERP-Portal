@@ -56,6 +56,18 @@ const FacultySchema = new mongoose.Schema(
     joiningYear: {
       type: String,
       required: true
+    },
+    isAdmin: {
+      type: Boolean,
+      default: false,
+    },
+    isStudent: {
+      type: Boolean,
+      default: false
+    },
+    isFaculty: {
+      type: Boolean,
+      default: true
     }
   },
   { timestamps: true }

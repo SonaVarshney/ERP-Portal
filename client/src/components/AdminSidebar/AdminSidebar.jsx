@@ -15,7 +15,8 @@ import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import AddTaskIcon from '@mui/icons-material/AddTask';
 import NotificationAddIcon from '@mui/icons-material/NotificationAdd';
 import CloseIcon from '@mui/icons-material/Close';
-
+import GroupAddIcon from '@mui/icons-material/GroupAdd';
+import GroupIcon from '@mui/icons-material/Group';
 
 import { Link } from 'react-router-dom';
 
@@ -65,8 +66,16 @@ const AdminSidebar = ({ setOpen }) => {
                     {/* Takes you to list of all registered students */}
                     <Link to="/admin/students" style={{ textDecoration: "none" }}>
                         <li>
-                            <PersonOutlineIcon className="icon" />
+                            <GroupIcon className="icon" />
                             <span>Students</span>
+                        </li>
+                    </Link>
+
+                    {/* Takes you to list of all registered faculty */}
+                    <Link to="/admin/faculties" style={{ textDecoration: "none" }}>
+                        <li>
+                            <PersonOutlineIcon className="icon" />
+                            <span>Faculties</span>
                         </li>
                     </Link>
 
@@ -99,8 +108,15 @@ const AdminSidebar = ({ setOpen }) => {
                     <p className="title">Create</p>
                     <Link to="/admin/students/new" style={{ textDecoration: "none" }}>
                         <li>
-                            <PersonAddIcon className="icon" />
+                            <GroupAddIcon className="icon" />
                             <span>Student</span>
+                        </li>
+                    </Link>
+
+                    <Link to="/admin/faculties/new" style={{ textDecoration: "none" }}>
+                        <li>
+                            <PersonAddIcon className="icon" />
+                            <span>Faculty</span>
                         </li>
                     </Link>
 
