@@ -53,7 +53,9 @@ const NewUser = ({ inputs, title }) => {
     
     } else {
       try {
-        await axios.post("http://localhost:5500/api/students/registerStudent", info)
+        await axios.post("http://localhost:5500/api/students/registerStudent", info, {
+          withCredentials: false
+        })
         navigate(-1)
       }
       catch (err) {

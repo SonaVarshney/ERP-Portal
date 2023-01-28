@@ -92,6 +92,17 @@ function App() {
     return user.isStudent && !user.isCr ? <Navigate to="/home" /> : (children) 
   }
 
+  // if user is logged in and reaches on log in page then redirect to home page
+  const LoggedIn = ({children}) => {
+    if(user) {
+      if(user.isAdmin)
+        return <Navigate to="/admin" />
+      else
+        return <Navigate to="/" />
+    } else
+    return children
+  }
+
   return (
 
     // darkmode context
@@ -101,7 +112,11 @@ function App() {
        <Routes>
 
         {/* Landing page */}
-        <Route path="/home" element={<Landing />} />
+        <Route path="/home" element={
+          <LoggedIn>
+            <Landing />
+          </LoggedIn>
+        } />
 
 
 
@@ -113,7 +128,9 @@ function App() {
 
         {/* login page for admin */}
         <Route path="/adminLogin" element={
+          <LoggedIn>
             <Login type="Admin" />
+          </LoggedIn>
         } />
 
         {/* dashboard of admin */}
@@ -256,11 +273,15 @@ function App() {
 
         {/* login page for main */}
         <Route path="/studentLogin" element={
-          <Login type="Student"/>
+          <LoggedIn>
+            <Login type="Student"/>
+          </LoggedIn>
         } />
 
         <Route path="/facultyLogin" element={
+          <LoggedIn>
           <Login type="Faculty" />
+          </LoggedIn>
         } />
 
         {/* dashboard of main */}

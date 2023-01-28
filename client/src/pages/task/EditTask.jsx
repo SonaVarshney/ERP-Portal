@@ -96,7 +96,9 @@ const EditTask = ({ title }) => {
             </form>
 
             {/* Submit Button */}
-            <button onClick={handleClick} id="submit">Edit Task</button>
+            <div className="submitButton">
+              <button onClick={handleClick} id="submit" className="form-btn">Edit Task</button>
+            </div>
           </div>
         </div>
       </div>

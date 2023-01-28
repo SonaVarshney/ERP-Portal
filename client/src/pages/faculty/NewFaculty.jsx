@@ -53,7 +53,9 @@ const NewFaculty = ({ inputs, title }) => {
     
     } else {
       try {
-        await axios.post("http://localhost:5500/api/faculties/registerFaculty", info)
+        await axios.post("http://localhost:5500/api/faculties/registerFaculty", info, {
+          withCredentials: false
+        })
         navigate(-1)
       }
       catch (err) {

@@ -244,7 +244,10 @@ const EditFaculty = ({ title, type }) => {
 
 
             </form>
-            <button disabled={sending} id="submit" onClick={handleClick}>Edit User</button>
+            <div className="submitButton">
+              <button className="form-btn" disabled={sending} id="submit" onClick={handleClick}>Edit User</button>
+            </div>
+
           
           </div>
         </div>

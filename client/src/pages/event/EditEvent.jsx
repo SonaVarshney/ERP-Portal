@@ -137,8 +137,9 @@ const EditEvent = ({ inputs, title }) => {
                                     />
                                 </div>
                             ))}
-
-                            <button onClick={handleClick} id="submit">Edit Event</button>
+                            <div className="submitButton">
+                                <button onClick={handleClick} id="submit">Edit Event</button>
+                            </div>
                         </form>
                     </div>
                 </div>

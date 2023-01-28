@@ -3,6 +3,7 @@ import "./navbar.scss";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
 import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
+import MailOutlineIcon from '@mui/icons-material/MailOutline';
 
 import { DarkModeContext } from "../../context/darkModeContext";
 import { AuthContext } from "../../context/AuthContext";
@@ -18,7 +19,9 @@ const Navbar = () => {
   const { Dispatch, darkMode } = useContext(DarkModeContext);
   const { user } = useContext(AuthContext)
   
-  const { data } = useFetch(`/updates`)
+  const updates = useFetch('/updates').data
+  const queries = useFetch('/queries').data
+
   let path
 
   if(user.isFaculty) {
@@ -29,8 +32,20 @@ const Navbar = () => {
   
   // use states for setting notifications, opening notification popup and opening side bar
   const [notifs, setNotifs] = useState([])
+  const [messages, setMessages] = useState([])
   const [openNotif, setOpenNotif] = useState(false);
   const [openSidebar, setOpenSidebar] = useState(false);
+  const [openMessages, setOpenMessages] = useState(false);
+
+  // feeds all notifications into the notifs array whenever page rerenders or data changes
+  useEffect(() => {
+    setNotifs(updates)
+  }, [updates])
+
+  // feeds all messages into the messages array whenever page rerenders or data changes
+  useEffect(() => {
+    setMessages(queries)
+  }, [queries])
 
   // this function is used to go to a certain end point
   const navigate = useNavigate();
@@ -40,12 +55,13 @@ const Navbar = () => {
     setOpenNotif(!openNotif)
   }
 
-  // feeds all notifications into the setNotifs array whenever page rerenders or data changes
-  useEffect(() => {
-    setNotifs(data.filter((d) => d.status === "New"))
-  }, [data])
+  // toggles open and close of notifications pop up
+  const handleMessages = () => {
+    setOpenMessages(!openMessages)
+  }
 
-
+  console.log(openMessages)
+  console.log(messages)
   return (
     <div className="navbar">
 
@@ -91,6 +107,35 @@ const Navbar = () => {
               </li>
             </Link>
           </ul>}
+
+
+
+
+          {/* Messages */}
+          {user.isFaculty && <div className="item" id="notif">
+            <MailOutlineIcon className="icon" onClick={handleMessages} />
+            <div className="counter">{messages.length}</div> {/* Shows number of notifications */}
+          </div>}
+
+          {/* Messages drop down will show when user clicks and useState gets set to true */}
+          {openMessages && <ul id="notif-menu">
+            {messages.map((item) => (
+              <li>
+                <h3>{item.title}</h3>
+                <p>{item.description.slice(0, 25)} ...</p>
+              </li>
+            ))}
+
+            {/* Takes to the page of all updates */}
+            <Link to="/queries" style={{ textDecoration: "none" }}>
+              <li id="more">
+                View all new queries
+              </li>
+            </Link>
+          </ul>}
+
+
+
 
           {/* Menu */}
 

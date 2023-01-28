@@ -113,10 +113,10 @@ const NavSidebar = ({ setOpen }) => {
                     </Link>
                     
                     {/* On click set usestate to true */}
-                    <li onClick={() => setOpenQuery(true)}>
+                    {user.isStudent && <li onClick={() => setOpenQuery(true)}>
                         <ContactSupportIcon className="icon" />
                         <span>Query</span>
-                    </li>
+                    </li>}
 
                     {/* Options for Users */}
                     

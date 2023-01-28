@@ -52,7 +52,9 @@ const NewUpdate = ({ inputs, type }) => {
                 </div>
               ))}
             </form>
-            <button onClick={handleClick} class="form-btn">Create Update</button>
+            <div className="submitButton">
+              <button onClick={handleClick} class="form-btn">Create Update</button>
+            </div>
           </div>
         </div>
       </div>

@@ -16,8 +16,12 @@ const Query = ({ setOpen, user }) => {
     // post the usestate to database
     const handleClick = async (e) => {
         e.preventDefault();
+
+        const newQuery = {
+            ...info, author: user._id
+        }
         try {
-            await axios.post("http://localhost:5500/api/queries", info, {
+            await axios.post("http://localhost:5500/api/queries", newQuery, {
                 withCredentials: false
             })
             setOpen(false)
