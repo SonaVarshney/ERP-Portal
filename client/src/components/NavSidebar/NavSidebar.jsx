@@ -13,6 +13,10 @@ import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import CloseIcon from '@mui/icons-material/Close';
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import EditIcon from '@mui/icons-material/Edit';
+import AddTaskIcon from '@mui/icons-material/AddTask';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import NotificationAddIcon from '@mui/icons-material/NotificationAdd';
+
 
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
@@ -59,14 +63,21 @@ const NavSidebar = ({ setOpen }) => {
                     <p className="title">Lists</p>
 
                     {/* Takes you to list of all tasks created by admin */}
-                    <Link to="/tasks" style={{ textDecoration: "none" }}>
+                    <Link to={user.isFaculty? "/tasks/cr" : "tasks"} style={{ textDecoration: "none" }}>
                         <li>
                             <TaskIcon className="icon" />
                             <span>Tasks</span>
                         </li>
                     </Link>
 
-                    {/* Takes you to list of all tasks created by teams */}
+                    { (user.isFaculty || (user.isStudent && user.isCR)) && <Link to="/updates/cr" style={{ textDecoration: "none" }}>
+                        <li>
+                            <NotificationsIcon className="icon" />
+                            <span>Updates</span>
+                        </li>
+                    </Link>}
+
+                    {/* Takes you to list of all events created by teams */}
                     <Link to="/events" style={{ textDecoration: "none" }}>
                         <li>
                             <EventIcon className="icon" />
@@ -76,6 +87,20 @@ const NavSidebar = ({ setOpen }) => {
 
                     {/* Create events/queries */}
                     <p className="title">Create</p>
+
+                    {(user.isFaculty) && <Link to="/tasks/cr/new" style={{ textDecoration: "none" }}>
+                        <li>
+                            <AddTaskIcon className="icon" />
+                            <span>Tasks</span>
+                        </li>
+                    </Link>}
+
+                    {(user.isFaculty || (user.isStudent && user.isCR)) && <Link to="/updates/cr/new" style={{ textDecoration: "none" }}>
+                        <li>
+                            <NotificationAddIcon className="icon" />
+                            <span>Updates</span>
+                        </li>
+                    </Link>}
 
                     {/* Event can be created only when user is a part of technical team so it will only be visible to them */}
                     <Link to="/newEvent" style={{ textDecoration: "none" }}>

@@ -1,10 +1,13 @@
 import "../../style/form.scss";
+
 import AdminNavbar from "../../components/adminNavbar/AdminNavbar";
+import Navbar from "../../components/navbar/Navbar";
+
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const NewUpdate = ({ inputs }) => {
+const NewUpdate = ({ inputs, type }) => {
   const [info, setInfo] = useState({});
   const navigate = useNavigate();
 
@@ -30,7 +33,7 @@ const NewUpdate = ({ inputs }) => {
   return (
     <div className="new">
       <div className="newContainer">
-        <AdminNavbar />
+        {type === "Admin" ? <AdminNavbar /> : <Navbar />}
         <div className="top">
           <h1>Add New Update</h1>
         </div>

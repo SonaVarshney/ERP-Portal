@@ -8,11 +8,9 @@ import { motion } from "framer-motion";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import TaskIcon from '@mui/icons-material/Task';
 import EventIcon from '@mui/icons-material/Event';
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
-import AddTaskIcon from '@mui/icons-material/AddTask';
 import NotificationAddIcon from '@mui/icons-material/NotificationAdd';
 import CloseIcon from '@mui/icons-material/Close';
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
@@ -79,15 +77,7 @@ const AdminSidebar = ({ setOpen }) => {
                         </li>
                     </Link>
 
-                    {/* Takes you to list of all tasks created by admin */}
-                    <Link to="/admin/tasks" style={{ textDecoration: "none" }}>
-                        <li>
-                            <TaskIcon className="icon" />
-                            <span>Tasks</span>
-                        </li>
-                    </Link>
-
-                    {/* Takes you to list of all tasks created by admin */}
+                    {/* Takes you to list of all updates created by admin */}
                     <Link to="/admin/updates" style={{ textDecoration: "none" }}>
                         <li>
                             <NotificationsIcon className="icon" />
@@ -95,7 +85,7 @@ const AdminSidebar = ({ setOpen }) => {
                         </li>
                     </Link>
 
-                    {/* Takes you to list of all tasks created by teams */}
+                    {/* Takes you to list of all events created by teams */}
                     <Link to="/admin/events" style={{ textDecoration: "none" }}>
                         <li>
                             <EventIcon className="icon" />
@@ -117,13 +107,6 @@ const AdminSidebar = ({ setOpen }) => {
                         <li>
                             <PersonAddIcon className="icon" />
                             <span>Faculty</span>
-                        </li>
-                    </Link>
-
-                    <Link to="/admin/tasks/new" style={{ textDecoration: "none" }}>
-                        <li>
-                            <AddTaskIcon className="icon" />
-                            <span>Tasks</span>
                         </li>
                     </Link>
 

@@ -117,6 +117,7 @@ function App() {
             </RequireAuth>
         } />
 
+
         {/* edit page for student */}
         <Route path="/admin/students/:studentId/edit" element={
           <RequireAuth>
@@ -165,31 +166,6 @@ function App() {
 
 
 
-        {/* routes for tasks */}
-
-        {/* list of tasks */}
-        <Route path="/admin/tasks" element={
-            <RequireAuth>
-                <List column={taskColumns} name="Task" type="Admin" />
-            </RequireAuth>
-        } />
-
-        {/* edit page for tasks */}
-        <Route path="/admin/tasks/:taskId/edit" element={
-            <RequireAuth>
-                <EditTask title="Update Task" />
-            </RequireAuth>
-        } />
-
-        {/* create task page */}
-        <Route path="/admin/tasks/new" element={
-            <RequireAuth>
-                <NewTask inputs={taskInputs} title="Add New Task" />
-            </RequireAuth>
-        } />
-
-
-
         {/* routes for updates */}
         <Route path="/admin/updates" element={
             <RequireAuth>
@@ -197,18 +173,18 @@ function App() {
             </RequireAuth>
         } />
 
-        {/* edit task for update */}
+        {/* edit update */}
         <Route path="/admin/updates/:updateId/edit" element={
             <RequireAuth>
-                <EditUpdate title="Edit Updates" />
+                <EditUpdate title="Edit Updates" type="Admin"/>
             </RequireAuth>
         } />
 
-        {/* create task page */}
+        {/* create update page */}
         <Route
             path="/admin/updates/new" element={
                 <RequireAuth>
-                    <NewUpdate inputs={updateInputs} title="Add New Update" />
+                    <NewUpdate inputs={updateInputs} title="Add New Update" type="Admin"/>
                 </RequireAuth>
             }
         />
@@ -273,19 +249,66 @@ function App() {
             </RequireAuth>
         } />
 
-        {/* tasks page */}
+        {/* tasks page student side */}
         <Route path="/tasks" element={
             <RequireAuth>
                 < List column={taskColumns} type="Main" name="Task" />
             </RequireAuth>
         } />
 
-        {/* updates page */}
+
+        {/* routes for tasks faculty side */}
+
+        {/* list of tasks */}
+        <Route path="/tasks/cr" element={
+            <RequireAuth>
+                <List column={taskColumns} name="Task" type="Creator" />
+            </RequireAuth>
+        } />
+
+        {/* edit page for tasks */}
+        <Route path="/tasks/cr/:taskId/edit" element={
+            <RequireAuth>
+                <EditTask title="Update Task" />
+            </RequireAuth>
+        } />
+
+        {/* create task page */}
+        <Route path="/tasks/cr/new" element={
+            <RequireAuth>
+                <NewTask inputs={taskInputs} title="Add New Task" />
+            </RequireAuth>
+        } />
+
+        {/* updates page student side*/}
         <Route path="/updates" element={
             <RequireAuth>
                 < List column={updateColumns} type="Main" name="Update" />
             </RequireAuth>
         } />
+
+        {/* updates page faculty side*/}
+        <Route path="/updates/cr" element={
+            <RequireAuth>
+                < List column={updateColumns} type="Creator" name="Update" />
+            </RequireAuth>
+        } />
+
+        {/* edit update */}
+        <Route path="/updates/cr/:updateId/edit" element={
+            <RequireAuth>
+                <EditUpdate title="Edit Updates" type="Main" />
+            </RequireAuth>
+        } />
+
+        {/* create update page */}
+        <Route
+            path="/updates/cr/new" element={
+                <RequireAuth>
+                    <NewUpdate inputs={updateInputs} title="Add New Update" type="Main" />
+                </RequireAuth>
+            }
+        />
 
         {/* events */}
         <Route path="/events" element={

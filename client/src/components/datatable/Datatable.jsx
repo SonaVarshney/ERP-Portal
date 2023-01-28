@@ -28,7 +28,7 @@ const Datatable = ({ column, name, type }) => {
 
   if (type === "Admin")
     path = location.pathname.split("/")[2];
-  else if (type === "Main")
+  else 
     path = location.pathname.split("/")[1];
 
 
@@ -107,13 +107,13 @@ const Datatable = ({ column, name, type }) => {
               )
             }
 
-            {type === "Admin" && <Link to={`${params.row._id}/edit`} style={{ textDecoration: "none" }}>
+            {(type === "Admin" || type==="Creator") && <Link to={`${params.row._id}/edit`} style={{ textDecoration: "none" }}>
               <div className="viewButton">Edit</div>
             </Link>}
             
             {/* Only admin can delete so it will only be visible to him */}
             {
-              type === "Admin" && <div
+              (type === "Admin" || type==="Creator") && <div
                 className="deleteButton"
                 onClick={() => handleDelete(params.row._id)}
               >

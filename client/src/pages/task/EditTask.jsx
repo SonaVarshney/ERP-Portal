@@ -6,7 +6,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import useFetch from "../../hooks/useFetch";
 
-import AdminNavbar from "../../components/adminNavbar/AdminNavbar";
+import Navbar from "../../components/navbar/Navbar";
 
 const EditTask = ({ title }) => {
   
@@ -50,7 +50,7 @@ const EditTask = ({ title }) => {
     <div className="new">
 
       <div className="newContainer">
-        <AdminNavbar />
+        <Navbar />
 
         {/* Title of form */}
         <div className="top">

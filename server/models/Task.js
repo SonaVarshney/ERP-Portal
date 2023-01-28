@@ -13,14 +13,6 @@ const TaskSchema = new mongoose.Schema(
     desc: {
       type: String,
       required: true
-    },
-    assignedTo: {
-      type: String,
-      required: true
-    },
-    status: {
-      type: String,
-      default: "New"
     }
   },
   { timestamps: true }

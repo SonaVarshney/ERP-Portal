@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
 
-import AdminNavbar from "../../components/adminNavbar/AdminNavbar";
+import Navbar from "../../components/navbar/Navbar";
 
 const NewTask = ({ inputs, title }) => {
 
@@ -39,7 +39,7 @@ const NewTask = ({ inputs, title }) => {
     <div className="new">
 
       <div className="newContainer">
-        <AdminNavbar />
+        <Navbar />
         
         <div className="top">
           <h1>{title}</h1>

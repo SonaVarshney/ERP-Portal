@@ -70,10 +70,10 @@ const Navbar = () => {
           </div>
 
           {/* Notifications */}
-          <div className="item" id="notif">
+          {user.isStudent && <div className="item" id="notif">
             <NotificationsNoneOutlinedIcon className="icon" onClick={handleNotif} />
             <div className="counter">{notifs.length}</div> {/* Shows number of notifications */}
-          </div>
+          </div>}
 
           {/* Notifs drop down will show when user clicks and useState gets set to true */}
           {openNotif && <ul id="notif-menu">
@@ -85,7 +85,7 @@ const Navbar = () => {
             ))}
 
             {/* Takes to the page of all updates */}
-            <Link to="/updates" style={{ textDecoration: "none" }}>
+            <Link to={user.isStudent && user.isCR? "/updates/cr" : "/updates"} style={{ textDecoration: "none" }}>
               <li id="more">
                 View all new updates
               </li>

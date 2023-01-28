@@ -8,8 +8,9 @@ import axios from "axios";
 import useFetch from "../../hooks/useFetch";
 
 import AdminNavbar from "../../components/adminNavbar/AdminNavbar";
+import Navbar from "../../components/navbar/Navbar";
 
-const EditUpdate = ({ title }) => {
+const EditUpdate = ({ title, type }) => {
 
   const location = useLocation();
   const id = location.pathname.split("/")[3];
@@ -44,7 +45,8 @@ const EditUpdate = ({ title }) => {
   return (
     <div className="new">
       <div className="newContainer">
-        <AdminNavbar />
+      {type === "Admin" ? <AdminNavbar /> : <Navbar />}
+
         <div className="top">
           <h1>{title}</h1>
         </div>
