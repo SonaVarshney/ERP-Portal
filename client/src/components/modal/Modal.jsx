@@ -36,7 +36,6 @@ const Modal = ({ setOpen, id, type }) => {
         }
     }
 
-    console.log(info)
 
     return (
         <div className="modal">

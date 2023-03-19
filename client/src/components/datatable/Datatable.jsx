@@ -3,7 +3,9 @@ import "./datatable.scss";
 // datagrid from library
 import { DataGrid } from "@mui/x-data-grid";
 import { Link, useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
+
 
 // useFetch and axios for fetching data
 import axios from "axios";
@@ -34,6 +36,7 @@ const Datatable = ({ column, name, type }) => {
 
   // fetching data using the path
   const { data } = useFetch(`/${path}`)
+  const { user } = useContext(AuthContext)
 
   // array usestate that gets fed every time page loads
   const [list, setList] = useState([]);
@@ -44,13 +47,13 @@ const Datatable = ({ column, name, type }) => {
   // this usestate is to set the rowid i.e. the id of the data entry user clicked to view
   const [rowid, setRowid] = useState("");
 
-
-
   // feeding the data when page rerenders or data changes
   useEffect(() => {
-      setList(data)
+      if(path === "queries")
+        setList(data.filter(item => item.queryTo === user._id))
+      else
+        setList(data)
   }, [data])
-
 
 
   // function that handles delete operation based on id passed to it

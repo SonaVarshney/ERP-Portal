@@ -42,6 +42,7 @@ import EditUpdate from './pages/update/EditUpdate';
 import NewEvent from './pages/event/NewEvent';
 import Events from './pages/event/Events';
 import EditEvent from './pages/event/EditEvent';
+import Response from './pages/response/Response';
 
 
 // Common Pages
@@ -434,6 +435,15 @@ function App() {
             <RequireFaculty>
               < List column={queryColumns} type="Faculty" name="Query" />
             </RequireFaculty>
+          </RequireAuth>
+        } />
+
+        {/* response page student side*/}
+        <Route path="/responses" element = {
+          <RequireAuth>
+            <RequireStudent>
+              <Response />
+            </RequireStudent>
           </RequireAuth>
         } />
 

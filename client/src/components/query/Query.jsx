@@ -3,10 +3,13 @@ import './query.css'
 import CancelIcon from '@mui/icons-material/Cancel';
 import { useState } from 'react';
 import axios from "axios"
+import useFetch from '../../hooks/useFetch';
 
 const Query = ({ setOpen, user }) => {
 
     const [info, setInfo] = useState({});
+    const [queryTo, setQueryTo] = useState();
+    const {data, loading} = useFetch("/faculties");
 
     // set the usestate to the data user passed 
     const handleChange = (e) => {
@@ -18,7 +21,7 @@ const Query = ({ setOpen, user }) => {
         e.preventDefault();
 
         const newQuery = {
-            ...info, author: user.username
+            ...info, author: user.name, queryTo: queryTo
         }
         try {
             await axios.post("http://localhost:5500/api/queries", newQuery, {
@@ -44,7 +47,7 @@ const Query = ({ setOpen, user }) => {
 
                 <form>
                     <input
-                        class="formInput"
+                        className="formInput"
                         type="text"
                         onChange={handleChange}
                         id="title"
@@ -58,6 +61,19 @@ const Query = ({ setOpen, user }) => {
                         onChange={handleChange}
                         placeholder='Describe your query'>
                     </textarea>
+                    <div className="formInput" id='options'>
+                    <label>Choose Teacher</label>
+                    <select id="queryTo" onChange={(e) => setQueryTo(e.target.value)}>
+                        <option key={0} value="none">-</option>
+                        {loading ? 
+                            "loading" : 
+                            data && data.map((teacher) => (
+                               
+                                <option key={teacher._id} value={teacher._id}>{teacher.name}</option>
+                            ))
+                        }
+                    </select>
+                    </div>
                 </form>
 
                 <button className="mButton" onClick={handleClick}>

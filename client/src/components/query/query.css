@@ -47,7 +47,6 @@
 
 .mContainer .formInput,
 #description {
-    width: 300px;
     font-size: 1.0rem;
     padding: 5px;
     margin: 15px;
@@ -68,4 +67,15 @@
 
 .mButton:hover {
     background-color: #7551f8a1;
+}
+
+#options {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#options label {
+    margin-bottom: 10px;
 }

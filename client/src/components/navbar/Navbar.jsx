@@ -42,10 +42,12 @@ const Navbar = () => {
     setNotifs(updates)
   }, [updates])
 
-  // feeds all messages into the messages array whenever page rerenders or data changes
+  // feeds all messages into the messages array whenever page rerenders or data changes  
   useEffect(() => {
-    setMessages(queries)
+    setMessages(queries.filter((item) => item.queryTo === user._id))
   }, [queries])
+
+
 
   // this function is used to go to a certain end point
   const navigate = useNavigate();
@@ -60,8 +62,6 @@ const Navbar = () => {
     setOpenMessages(!openMessages)
   }
 
-  console.log(openMessages)
-  console.log(messages)
   return (
     <div className="navbar">
 

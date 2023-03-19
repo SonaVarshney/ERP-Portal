@@ -1,8 +1,11 @@
 import Query from "../models/Query.js";
+import Faculty from "../models/Faculty.js";
 
 export const createQuery = async (req, res, next) => {
 
   const newQuery = new Query(req.body);
+  const faculty = await Faculty.findById(newQuery.queryTo);
+  newQuery.teacher = faculty.name;
   try {
     const savedQuery = await newQuery.save();
     res.status(200).json(savedQuery);

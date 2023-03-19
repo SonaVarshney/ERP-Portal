@@ -13,9 +13,13 @@ const QuerySchema = new mongoose.Schema({
     author: {
         type: String
     },
-    // queryTo: {
-
-    // },
+    queryTo: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Faculty'
+    },
+    teacher: {
+        type: String
+    },
     response: {
         type: String
     }

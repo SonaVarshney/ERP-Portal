@@ -16,6 +16,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import AddTaskIcon from '@mui/icons-material/AddTask';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import NotificationAddIcon from '@mui/icons-material/NotificationAdd';
+import MarkChatReadIcon from '@mui/icons-material/MarkChatRead';
 
 
 import { useContext } from "react";
@@ -77,13 +78,13 @@ const NavSidebar = ({ setOpen }) => {
                         </li>
                     </Link>}
 
-                    {/* Takes you to list of all events created by teams */}
-                    <Link to="/events" style={{ textDecoration: "none" }}>
+                    {/* Takes you to list of all responses sent by faculties */}
+                    {user.isStudent && <Link to="/responses" style={{ textDecoration: "none" }}>
                         <li>
-                            <EventIcon className="icon" />
-                            <span>Events</span>
+                            <MarkChatReadIcon className="icon" />
+                            <span>Responses</span>
                         </li>
-                    </Link>
+                    </Link>}
 
                     {/* Create events/queries */}
                     <p className="title">Create</p>
