@@ -102,7 +102,7 @@ const Datatable = ({ column, name, type }) => {
               (
                 // handleclick will update openModal and rowid so that a popup can open with details of the data entry user wants to see
                 <div className="viewButton" onClick={() => handleClick(params.row._id)}>
-                  View
+                  {name==="Query"? "Respond" : "View"}
                 </div>
               )
             }

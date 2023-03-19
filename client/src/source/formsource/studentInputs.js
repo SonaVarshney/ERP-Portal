@@ -46,11 +46,5 @@ export const studentInputs = [
         label: "Date of Birth",
         type: "date",
         placeholder: "Enter student's date of birth",
-    },
-    {
-        id: "section",
-        label: "Section",
-        type: "text",
-        placeholder: "Enter student's section",
-    },
+    }
 ];

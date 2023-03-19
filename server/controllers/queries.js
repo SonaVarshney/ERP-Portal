@@ -13,7 +13,7 @@ export const createQuery = async (req, res, next) => {
 
 export const updateQuery = async (req, res, next) => {
   try {
-    const Query = await Query.findByIdAndUpdate(
+    const query = await Query.findByIdAndUpdate(
       req.params.id,
       { $set: req.body },
       { new: true }

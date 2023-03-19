@@ -2,6 +2,9 @@ import "./modal.css"
 
 import CancelIcon from '@mui/icons-material/Cancel';
 import useFetch from "../../hooks/useFetch"
+import { useState } from "react";
+import axios from "axios";
+
 
 
 // setOpen prop, id is the id of the data we need to display and type will tell whether it's task or update
@@ -10,6 +13,30 @@ const Modal = ({ setOpen, id, type }) => {
 
     // fetch the required data
     const { data } = useFetch(`/${type}/${id}`);
+
+    const [info, setInfo] = useState({});
+
+    // set the usestate to the data user passed 
+    const handleChange = (e) => {
+        setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+    }
+
+    // post the usestate to database
+    const handleClick = async (e) => {
+        e.preventDefault();
+        
+        try {
+            await axios.put(`http://localhost:5500/api/queries/${id}`, info, {
+                withCredentials: false
+            })
+            setOpen(false)
+        }
+        catch (err) {
+            console.log(err)
+        }
+    }
+
+    console.log(info)
 
     return (
         <div className="modal">
@@ -46,6 +73,29 @@ const Modal = ({ setOpen, id, type }) => {
                         </button>
                     </div>
                 }
+
+                {/* If type is query */}
+                {
+                    type === "queries" &&
+                    <div className="mTasks">
+                        <div className="mTitle">{data.title}</div>
+                        <div className="mDesc">{data.description}</div>
+                        <textarea
+                            name="response"
+                            id="response"
+                            cols="30"
+                            rows="10"
+                            value={data.response}
+                            onChange={handleChange}
+                            placeholder='Respond to the query'>
+                        </textarea>
+                        <button className="mButton" onClick={handleClick}>
+                            Done
+                        </button>
+                    </div>
+                }
+
+
             </div>
         </div>
     )

@@ -26,7 +26,6 @@ const List = () => {
           <TableRow>
             <TableCell className="tableCell">Task</TableCell>
             <TableCell className="tableCell">Description</TableCell>
-            <TableCell className="tableCell">Assigned To</TableCell>
             <TableCell className="tableCell">Deadline</TableCell>
             {/* <TableCell className="tableCell">Date</TableCell> */}
           </TableRow>
@@ -49,8 +48,7 @@ const List = () => {
 
               {/* Other details */}
               <TableCell className="tableCell">{row.title}</TableCell>
-              <TableCell className="tableCell">{`${row.desc.slice(0, 30)}...`}</TableCell>
-              <TableCell className="tableCell">{row.assignedTo}</TableCell>
+              <TableCell className="tableCell">{`${row.desc.slice(0, 90)}...`}</TableCell>
               <TableCell className="tableCell">{row.deadline}</TableCell>
               
               {/* Can be used to show some kind of status */}

@@ -18,7 +18,7 @@ const Query = ({ setOpen, user }) => {
         e.preventDefault();
 
         const newQuery = {
-            ...info, author: user._id
+            ...info, author: user.username
         }
         try {
             await axios.post("http://localhost:5500/api/queries", newQuery, {

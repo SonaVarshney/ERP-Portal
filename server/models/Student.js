@@ -39,10 +39,6 @@ const StudentSchema = new mongoose.Schema(
       type: String,
       required: true
     },
-    section: {
-      type: String,
-      required: true
-    },
     studentPhone: {
       type: String,
       required: true

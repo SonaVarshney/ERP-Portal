@@ -16,9 +16,9 @@ const QuerySchema = new mongoose.Schema({
     // queryTo: {
 
     // },
-    // response: {
-        
-    // }
+    response: {
+        type: String
+    }
 }, { timestamps: true })
 
 export default mongoose.model("Query", QuerySchema);

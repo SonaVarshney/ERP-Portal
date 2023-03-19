@@ -43,11 +43,6 @@ export const studentColumns = [
         width: 100,
     },
     {
-        field: "section",
-        headerName: "Section",
-        width: 100,
-    },
-    {
         field: "studentPhone",
         headerName: "Phone",
         width: 100,

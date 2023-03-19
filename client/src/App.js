@@ -18,6 +18,7 @@ import { studentColumns } from "./source/datatablesource/studentColumns";
 import { facultyColumns } from "./source/datatablesource/facultyColumns";
 import { taskColumns } from "./source/datatablesource/taskColumns";
 import { updateColumns } from "./source/datatablesource/updateColumns";
+import { queryColumns } from "./source/datatablesource/queryColumns";
 
 
 // Form Inputs
@@ -425,6 +426,15 @@ function App() {
             <RequireAuth>
                 <EditEvent inputs={eventInputs} title="Edit Event" />
             </RequireAuth>
+        } />
+
+        {/* query page faculty side*/}
+        <Route path="/queries" element = {
+          <RequireAuth>
+            <RequireFaculty>
+              < List column={queryColumns} type="Faculty" name="Query" />
+            </RequireFaculty>
+          </RequireAuth>
         } />
 
         </Routes>
