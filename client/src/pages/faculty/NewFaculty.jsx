@@ -9,6 +9,7 @@ import { useState } from "react";
 
 import axios from "axios"
 
+import { departments} from "../../source/formsource/arrays";
 import AdminNavbar from "../../components/adminNavbar/AdminNavbar";
 
 const NewFaculty = ({ inputs, title }) => {
@@ -147,10 +148,11 @@ const NewFaculty = ({ inputs, title }) => {
                   onChange={handleChange}
                 >
                   <option value={"-"}> </option>
-                  <option value={"Computer Science & Engineering"}>Computer Science & Engineering</option>
-                  <option value={"Information Technology"}>Information Technology</option>
-                  <option value={"Mechanical & Automation Engineering"}>Mechanical & Automation Engineering</option>
-                  <option value={"Electronics & Communication Engineering"}>Electronics & Communication Engineering</option>
+                  {
+                    departments.map((d) => (
+                      <option value={d.code} key={d.id}>{d.name}</option>
+                    ))
+                  }
                 </select>
               </div>
 

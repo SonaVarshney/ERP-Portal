@@ -9,12 +9,14 @@ import { useState } from "react";
 
 import axios from "axios"
 
+import { departments, semesters} from "../../source/formsource/arrays";
 import AdminNavbar from "../../components/adminNavbar/AdminNavbar";
 
 const NewUser = ({ inputs, title }) => {
   
   const [file, setFile] = useState("");
   const [info, setInfo] = useState({});
+  const [year, setYear] = useState(0);
   const navigate = useNavigate();
   const handleChange = (e) => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
@@ -39,7 +41,7 @@ const NewUser = ({ inputs, title }) => {
         const { url } = uploadRes.data;
         const { public_id } = uploadRes.data;
         const newuser = {
-          ...info, profilePicture: url, cloud_id: public_id
+          ...info, profilePicture: url, cloud_id: public_id, year: year
         }
 
         axios.post("http://localhost:5500/api/students/registerStudent", newuser, {
@@ -127,16 +129,17 @@ const NewUser = ({ inputs, title }) => {
               ))}
 
               <div className="formInput">
-                <label>Year</label>
+                <label>Semester</label>
                 <select
-                  id="year"
+                  id="semester"
                   onChange={handleChange}
                 >
                   <option value={0}>-</option>
-                  <option value={"1st"}>1st</option>
-                  <option value={"2nd"}>2nd</option>
-                  <option value={"3rd"}>3rd</option>
-                  <option value={"4th"}>4th</option>
+                  {
+                    semesters.map((s) => (
+                      <option value={s.id} key={s.id} onClick={() => setYear(s.year)}>{s.name}</option>
+                    ))
+                  }
                 </select>
               </div>
 
@@ -147,11 +150,16 @@ const NewUser = ({ inputs, title }) => {
                   onChange={handleChange}
                 >
                   <option value={"-"}> </option>
-                  <option value={"Computer Science & Engineering"}>Computer Science & Engineering</option>
-                  <option value={"Information Technology"}>Information Technology</option>
-                  <option value={"Mechanical & Automation Engineering"}>Mechanical & Automation Engineering</option>
-                  <option value={"Electronics & Communication Engineering"}>Electronics & Communication Engineering</option>
+                  {
+                    departments.map((d) => (
+                      <option value={d.code} key={d.id}>{d.name}</option>
+                    ))
+                  }
                 </select>
+              </div>
+
+              <div className="formInput">
+                <label>Year: {year}</label>
               </div>
 
             </form>
