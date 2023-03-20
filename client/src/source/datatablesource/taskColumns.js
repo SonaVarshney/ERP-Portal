@@ -19,5 +19,5 @@ export const taskColumns = [
         field: "deadline",
         headerName: "Deadline",
         width: 100,
-    },
+    }
 ];

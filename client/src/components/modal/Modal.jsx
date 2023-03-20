@@ -53,9 +53,9 @@ const Modal = ({ setOpen, id, type }) => {
                     <div className="mUpdates">
                         <div className="mTitle">{data.title}</div>
                         <div className="mDesc">{data.desc}</div>
-                        <button className="mButton">
+                        {/* <button className="mButton">
                             Mark
-                        </button>
+                        </button> */}
                     </div>
                 }
 
@@ -67,9 +67,9 @@ const Modal = ({ setOpen, id, type }) => {
                         <div className="mDesc">{data.desc}</div>
                         <p><span>Deadline</span> : {data.deadline}</p>
                         <p><span>Assigned To</span> : {data.assignedTo}</p>
-                        <button className="mButton">
+                        {/* <button className="mButton">
                             Mark
-                        </button>
+                        </button> */}
                     </div>
                 }
 
@@ -94,7 +94,20 @@ const Modal = ({ setOpen, id, type }) => {
                     </div>
                 }
 
-
+                {/* If type is tasks */}
+                {
+                    type === "courses" &&
+                    <div className="mTasks">
+                        <div className="mTitle">{data.name}</div>
+                        <div className="mDesc">{data.subjectCode}</div>
+                        <p>{data.credits} Credits</p>
+                        <p><span>Department</span> : {data.department}</p>
+                        <p><span>Semester</span> : {data.semester}</p>
+                        {/* <button className="mButton">
+                            Mark
+                        </button> */}
+                    </div>
+                }
             </div>
         </div>
     )

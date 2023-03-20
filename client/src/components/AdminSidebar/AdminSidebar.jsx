@@ -15,6 +15,8 @@ import NotificationAddIcon from '@mui/icons-material/NotificationAdd';
 import CloseIcon from '@mui/icons-material/Close';
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
 import GroupIcon from '@mui/icons-material/Group';
+import BookIcon from '@mui/icons-material/Book';
+import CollectionsBookmarkIcon from '@mui/icons-material/CollectionsBookmark';
 
 import { Link } from 'react-router-dom';
 
@@ -93,6 +95,14 @@ const AdminSidebar = ({ setOpen }) => {
                         </li>
                     </Link>
 
+                    {/* Takes you to list of all courses created by admin */}
+                    <Link to="/admin/courses" style={{ textDecoration: "none" }}>
+                        <li>
+                            <CollectionsBookmarkIcon className="icon" />
+                            <span>Courses</span>
+                        </li>
+                    </Link>
+
                     {/* Options under Create */}
 
                     <p className="title">Create</p>
@@ -114,6 +124,13 @@ const AdminSidebar = ({ setOpen }) => {
                         <li>
                             <NotificationAddIcon className="icon" />
                             <span>Updates</span>
+                        </li>
+                    </Link>
+
+                    <Link to="/admin/courses/new" style={{ textDecoration: "none" }}>
+                        <li>
+                            <BookIcon className="icon" />
+                            <span>Courses</span>
                         </li>
                     </Link>
 

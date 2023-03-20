@@ -33,9 +33,11 @@ import { eventInputs } from './source/formsource/eventInputs';
 import NewStudent from "./pages/student/NewStudent";
 import NewFaculty from "./pages/faculty/NewFaculty";
 import NewTask from "./pages/task/NewTask";
+import NewCourse from "./pages/course/NewCourse";
 import NewUpdate from "./pages/update/NewUpdate"
 import EditTask from './pages/task/EditTask';
 import EditUpdate from './pages/update/EditUpdate';
+import EditCourse from './pages/course/EditCourse';
 
 
 // Main Pages
@@ -54,6 +56,8 @@ import List from "./pages/list/List"
 import Landing from "./pages/Landing/Landing";
 import EditStudent from './pages/student/EditStudent';
 import EditFaculty from './pages/faculty/EditFaculty';
+import { courseColumns } from "./source/datatablesource/courseColumns";
+import { courseInputs } from "./source/formsource/courseInputs";
 
 
 function App() {
@@ -255,6 +259,44 @@ function App() {
                   </RequireAdmin>
                 </RequireAuth>
             }
+        />
+
+        {/* routes for courses */}
+
+        {/* list of courses */}
+
+        <Route 
+          path="/admin/courses" element={
+            <RequireAdmin>
+              <RequireAuth>
+                <List column={courseColumns} name="Course" type="Admin"/>
+              </RequireAuth>
+            </RequireAdmin>
+          }
+        />
+
+        {/*  create new courses */}
+        
+        <Route 
+          path="/admin/courses/new" element={
+            <RequireAdmin>
+              <RequireAuth>
+                <NewCourse inputs={courseInputs} title="Add New Course"/>
+              </RequireAuth>
+            </RequireAdmin>
+          }
+        />
+
+        {/* edit courses */}
+
+        <Route 
+          path="/admin/courses/:courseId/edit" element={
+            <RequireAdmin>
+              <RequireAuth>
+                <EditCourse title="Edit Courses" type="Admin"/>
+              </RequireAuth>
+            </RequireAdmin>
+          }
         />
 
 
