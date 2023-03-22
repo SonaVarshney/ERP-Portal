@@ -15,18 +15,17 @@ import useFetch from "../../hooks/useFetch.js"
 const List = () => {
 
   // fetch latest/upcoming events
-  const { data } = useFetch("/tasks");
+  const { data } = useFetch("/updates");
 
   return (
     <TableContainer component={Paper} className="table">
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
+        <TableHead style={{"backgroundColor": "#EEEEEE"}}>
 
           {/* Column Names */}
           <TableRow>
-            <TableCell className="tableCell">Task</TableCell>
-            <TableCell className="tableCell">Description</TableCell>
-            <TableCell className="tableCell">Deadline</TableCell>
+            <TableCell className="tableCell" style={{"fontWeight": "bold"}}>Update</TableCell>
+            <TableCell className="tableCell" style={{"fontWeight": "bold"}}>Description</TableCell>
             {/* <TableCell className="tableCell">Date</TableCell> */}
           </TableRow>
         </TableHead>
@@ -48,8 +47,7 @@ const List = () => {
 
               {/* Other details */}
               <TableCell className="tableCell">{row.title}</TableCell>
-              <TableCell className="tableCell">{`${row.desc.slice(0, 90)}...`}</TableCell>
-              <TableCell className="tableCell">{row.deadline}</TableCell>
+              <TableCell className="tableCell">{row.desc}</TableCell>
               
               {/* Can be used to show some kind of status */}
               

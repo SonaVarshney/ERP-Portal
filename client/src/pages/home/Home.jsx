@@ -17,7 +17,14 @@ const Home = ({ type }) => {
         {/* Navbar according to the type of user */}
         {(type === "Admin") ? (<AdminNavbar />) : (<Navbar />)}
 
-        
+        <div className="welcome">
+          <img src="https://drive.google.com/uc?id=1ReJV_kcqYaIuxt6ot-LXFYHcuJXtwJxx" alt="" />
+          <div className="text">
+            <h1>Welcome to ERP Portal</h1>
+            <p>Providing seamless navigation for your college life via our portal</p>
+          </div>
+        </div>
+
         {/* widgets */}
         <div className="widgets">
           <Widget type="ml" />
@@ -27,6 +34,13 @@ const Home = ({ type }) => {
           <Widget type="operatingsystem" />
           <Widget type="systemdesign" />
         </div>
+
+        {/* Latest Updates */}
+        <div className="AdminListContainer">
+          <div className="listTitle">Latest Notifications</div>
+          <Table type="updates" />
+        </div>
+        
 
         {/* <iframe src="https://drive.google.com/file/d/1O0i1yYkclXOuZ6xY_SAXjp5PsL0KFvJj/preview"
           width="800"
@@ -39,11 +53,6 @@ const Home = ({ type }) => {
           <Chart title="Last 6 Months (Revenue)" aspect={2 / 1} />
         </div> */}
 
-        {/* Upcoming Events */}
-        <div className="AdminListContainer">
-          <div className="listTitle">Tasks Assigned</div>
-          <Table type="updates" />
-        </div>
       </div>
     </div>
   );
