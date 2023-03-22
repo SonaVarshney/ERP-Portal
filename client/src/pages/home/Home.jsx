@@ -28,6 +28,11 @@ const Home = ({ type }) => {
           <Widget type="systemdesign" />
         </div>
 
+        {/* <iframe src="https://drive.google.com/file/d/1O0i1yYkclXOuZ6xY_SAXjp5PsL0KFvJj/preview"
+          width="800"
+          height="400"
+        /> */}
+
         {/* total revenue and charts
         <div className="charts">
           <Featured />

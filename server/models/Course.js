@@ -19,6 +19,15 @@ const CourseSchema = new mongoose.Schema(
         }, 
         semester: {
             type: String
+        },
+        syllabusPicture: {
+            type: String,
+        },
+        cloud_id: {
+            type: String,
+        },
+        material: {
+            type: [String]
         }
     }
 );

@@ -72,6 +72,7 @@ const NewEvent = ({ inputs, title }) => {
     }
   }
 
+
   const [openForm, setOpenForm] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [clickedEvent, setClickedEvent] = useState({});

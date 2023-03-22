@@ -33,7 +33,8 @@ const Events = () => {
         const e = data.map((d) => {
             const startDate = new Date(d.startDate);
             const endDate = new Date(d.endDate);
-            return { title: d.name, start: startDate, end: endDate };
+
+            return { title: d.name, start: startDate, end: endDate, allDay: false};
         })
         setEvents(e);
     }, [data])
