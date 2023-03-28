@@ -7,16 +7,16 @@ import { motion } from "framer-motion";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import TaskIcon from '@mui/icons-material/Task';
 import ContactSupportIcon from '@mui/icons-material/ContactSupport';
-import EventIcon from '@mui/icons-material/Event';
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import CloseIcon from '@mui/icons-material/Close';
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import EditIcon from '@mui/icons-material/Edit';
 import AddTaskIcon from '@mui/icons-material/AddTask';
-import NotificationsIcon from '@mui/icons-material/Notifications';
 import NotificationAddIcon from '@mui/icons-material/NotificationAdd';
 import MarkChatReadIcon from '@mui/icons-material/MarkChatRead';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+
 
 
 import { useContext } from "react";
@@ -61,7 +61,15 @@ const NavSidebar = ({ setOpen }) => {
 
                     {/* All the Lists*/}
 
-                    <p className="title">Lists</p>
+                    <p className="title">Information</p>
+
+                    {/* Calender Page */}
+                    <Link to="/events" style={{"textDecoration": "none"}}>
+                        <li>
+                            <CalendarMonthIcon className="icon"/>
+                            <span>Calender</span>
+                        </li>
+                    </Link>
 
                     {/* Takes you to list of all tasks created by admin */}
                     <Link to={user.isFaculty? "/tasks/cr" : "tasks"} style={{ textDecoration: "none" }}>
@@ -70,13 +78,6 @@ const NavSidebar = ({ setOpen }) => {
                             <span>Tasks</span>
                         </li>
                     </Link>
-
-                    { (user.isFaculty || (user.isStudent && user.isCR)) && <Link to="/updates/cr" style={{ textDecoration: "none" }}>
-                        <li>
-                            <NotificationsIcon className="icon" />
-                            <span>Updates</span>
-                        </li>
-                    </Link>}
 
                     {/* Takes you to list of all responses sent by faculties */}
                     {user.isStudent && <Link to="/responses" style={{ textDecoration: "none" }}>

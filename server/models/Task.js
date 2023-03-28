@@ -6,14 +6,14 @@ const TaskSchema = new mongoose.Schema(
       type: String,
       required: true
     },
+    desc: {
+      type: String,
+      required: true
+    },
     deadline: {
       type: String,
       required: true
     },
-    desc: {
-      type: String,
-      required: true
-    }
   },
   { timestamps: true }
 );

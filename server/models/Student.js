@@ -74,7 +74,13 @@ const StudentSchema = new mongoose.Schema(
     isCR: {
       type: Boolean,
       default: false
-    }
+    },
+    courses: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Course'
+      }
+    ]
   },
   { timestamps: true }
 );

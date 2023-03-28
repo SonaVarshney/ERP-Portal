@@ -4,13 +4,15 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
+import DatePicker from "react-datepicker";
 
 import Navbar from "../../components/navbar/Navbar";
 
 const NewTask = ({ inputs, title }) => {
 
   const [info, setInfo] = useState({});
-  
+  const [deadline, setDeadline] = useState("")
+
   const navigate = useNavigate();
   
   const handleChange = (e) => {
@@ -23,7 +25,7 @@ const NewTask = ({ inputs, title }) => {
     e.preventDefault();
     try {
       const newtask = {
-        ...info,
+        ...info, deadline: deadline
       }
 
       await axios.post("http://localhost:5500/api/tasks", newtask, {
@@ -48,6 +50,7 @@ const NewTask = ({ inputs, title }) => {
         <div className="bottom">
           <div className="right">
             <form>
+
               {inputs.map((input) => (
                 <div className="formInput" key={input.id}>
                   <label>{input.label}</label>
@@ -59,6 +62,18 @@ const NewTask = ({ inputs, title }) => {
                   />
                 </div>
               ))}
+
+              <label>Set Deadline</label>
+              <DatePicker
+                class="date-picker"
+                showTimeSelect
+                placeholderText="Choose Date and Time"
+                style={{ marginRight: "10px" }}
+                selected={deadline}
+                className="formInput"
+                onChange={(deadline) => setDeadline(deadline)}
+              />
+
             </form>
             <div className="submitButton">
               <button onClick={handleClick} className="form-btn">Create Task</button>

@@ -412,14 +412,14 @@ function App() {
             </RequireAuth>
         } />
 
-        {/* updates page student side*/}
+        {/* updates page student side
         <Route path="/updates" element={
             <RequireAuth>
               <RequireStudent>
                 < List column={updateColumns} type="Main" name="Update" />
               </RequireStudent>
             </RequireAuth>
-        } />
+        } /> */}
 
         {/* updates page faculty side*/}
         <Route path="/updates/cr" element={

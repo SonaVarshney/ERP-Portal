@@ -28,6 +28,10 @@ const CourseSchema = new mongoose.Schema(
         },
         material: {
             type: [String]
+        },
+        teacher: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Faculty'
         }
     }
 );

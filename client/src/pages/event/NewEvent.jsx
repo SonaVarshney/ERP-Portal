@@ -29,6 +29,7 @@ const NewEvent = ({ inputs, title }) => {
   const { data } = useFetch('/events')
   
   const navigate = useNavigate();
+
   const handleChange = (e) => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   }
@@ -136,6 +137,7 @@ const NewEvent = ({ inputs, title }) => {
                     selected={start}
                     onChange={(start) => setStart(start)}
                   />
+                  
                   <DatePicker
                     class="date-picker"
                     showTimeSelect
@@ -155,6 +157,7 @@ const NewEvent = ({ inputs, title }) => {
                 </form>
               </div>
             </div></>}
+
         {!openForm && <div className="cardsContainer">
           {list.map((item, i) => (
             <div className="card" key={item._id}>

@@ -68,6 +68,10 @@ const FacultySchema = new mongoose.Schema(
     isFaculty: {
       type: Boolean,
       default: true
+    },
+    subject: { 
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Course'
     }
   },
   { timestamps: true }

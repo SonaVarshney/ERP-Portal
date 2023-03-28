@@ -92,6 +92,12 @@ const Single = ({ type }) => {
                   <span className="itemValue">{data.joiningYear}</span>
                 </div>
 
+                {/* Courses */}
+                <div className="detailItem">
+                  <span className="itemKey">Course:</span>
+                  <span className="itemValue">{data.subject.name}</span>
+                </div>
+
                 {/* Gender */}
                 <div className="detailItem">
                   <span className="itemKey">Gender:</span>

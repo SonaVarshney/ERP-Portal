@@ -9,7 +9,7 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import "react-datepicker/dist/react-datepicker.css";
 import Navbar from "../../components/navbar/Navbar";
 import useFetch from '../../hooks/useFetch';
-import EventModal from '../../components/eventModal/EventModal';
+import Modal from '../../components/modal/Modal';
 
 const locales = {
     "en-US": require("date-fns/locale/en-US"),
@@ -24,24 +24,31 @@ const localizer = dateFnsLocalizer({
 
 
 const Events = () => {
-    const { data } = useFetch("/events")
+    const tasks = useFetch("/tasks").data
     const [events, setEvents] = useState([]);
     const [clickedEvent, setClickedEvent] = useState({});
     const [openModal, setOpenModal] = useState(false);
 
     useEffect(() => {
-        const e = data.map((d) => {
-            const startDate = new Date(d.startDate);
-            const endDate = new Date(d.endDate);
 
-            return { title: d.name, start: startDate, end: endDate, allDay: false};
+        // const e = data.map((d) => {
+        //     const startDate = new Date(d.startDate);
+        //     const endDate = new Date(d.endDate);
+
+        //     return { title: d.name, start: startDate, end: endDate};
+        // })
+
+        const e = tasks.map((t) => {
+            const deadline = new Date(t.deadline)
+            console.log(deadline)
+            return {title: t.title, start:deadline, end: deadline}
         })
         setEvents(e);
-    }, [data])
+    }, [tasks])
 
     const handleEventPopup = (e) => {
         if (e.target.className === "rbc-event-content") {
-            const event = data.filter((item) => { return item["name"] === e.target.title }
+            const event = tasks.filter((item) => { return item["title"] === e.target.title }
             );
             setClickedEvent(event[0]);
             setOpenModal(true)
@@ -52,9 +59,9 @@ const Events = () => {
         <div className='events'>
             <Navbar />
             <div onClick={handleEventPopup}>
-                <Calendar localizer={localizer} events={events} startAccessor="start" endAccessor="end" style={{ height: 500, margin: "50px" }} />
+                <Calendar localizer={localizer} events={events} startAccessor="start" endAccessor="start" style={{ height: 500, margin: "50px" }} />
             </div>
-            {openModal && <EventModal setOpen={setOpenModal} event={clickedEvent} />}
+            {openModal && <Modal setOpen={setOpenModal} id={clickedEvent._id} type="tasks"/>}
         </div>
 
     )

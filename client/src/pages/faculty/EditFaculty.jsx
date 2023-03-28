@@ -23,6 +23,7 @@ const EditFaculty = ({ title, type }) => {
     id = location.pathname.split("/")[2];
 
   const { data } = useFetch(`/faculties/${id}`)
+  const courses = useFetch('/courses').data;
   const [info, setInfo] = useState({});
   const [file, setFile] = useState("");
   const [sending, setSending] = useState(false)
@@ -210,10 +211,9 @@ const EditFaculty = ({ title, type }) => {
                   onChange={handleChange}
                   value={info.department}
                 >
-                  <option value={"-"}> </option>
                   {
                     departments.map((d) => (
-                      <option value={d.code} key={d.id}>{d.name}</option>
+                      <option value={d.code} key={d._id}>{d.name}</option>
                     ))
                   }
                 </select>
@@ -242,6 +242,23 @@ const EditFaculty = ({ title, type }) => {
                   <option value={"Assistant Professor"}>Assistant Professor</option>
                   <option value={"Professor"}>Professor</option>
                   <option value={"Doctor"}>Doctor</option>
+                </select>
+              </div>}
+
+              {type==="Admin" && <div className="formInput">
+                <label>Course Taught</label>
+                <select
+                  id="subject"
+                  onChange={handleChange}
+                  value={info.subject}
+                >
+                  {
+                    courses.map((course) => (
+                      <option value={course._id}>{course.name}</option>
+                    ))
+                  }
+                  <option value={"none"}>none</option>
+                  
                 </select>
               </div>}
 
