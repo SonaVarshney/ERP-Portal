@@ -11,13 +11,45 @@ const TimetableSchema = new mongoose.Schema({
         type: String, 
         required: true
     },
-    schedule: [
+    Monday:[
         {
             start_time: String,
             end_time: String,
-            day: String,
             subject: String,
             teacher: String,
+            topic: String
+        }
+    ],
+    Tuesday:[
+        {
+            start_time: String,
+            end_time: String,
+            subject: String,
+            teacher: String,
+            topic: String
+        }
+    ],
+    Wednesday:[
+        {
+            start_time: String,
+            end_time: String,
+            subject: String,
+            topic: String
+        }
+    ],
+    Thursday:[
+        {
+            start_time: String,
+            end_time: String,
+            subject: String,
+            topic: String
+        }
+    ],
+    Friday:[
+        {
+            start_time: String,
+            end_time: String,
+            subject: String,
             topic: String
         }
     ]

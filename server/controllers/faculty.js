@@ -1,7 +1,9 @@
 import Faculty from "../models/Faculty.js";
 import bcrypt from "bcryptjs";
+import { semesters, departments } from "../utils/array.js";
 import { createError } from "../utils/error.js";
 import jwt from "jsonwebtoken";
+
 
 export const registerFaculty = async (req, res, next) => {
   try {
@@ -9,7 +11,6 @@ export const registerFaculty = async (req, res, next) => {
     const em = await Faculty.findOne({ email: req.body.email });
     if (em)
       return res.status(409).send({ message: "User with given email already exists" })
-
 
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(req.body.password, salt);

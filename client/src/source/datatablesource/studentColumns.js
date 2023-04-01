@@ -38,6 +38,11 @@ export const studentColumns = [
         width: 100,
     },
     {
+        field: "semester",
+        headerName: "Semester",
+        width: 100
+    },
+    {
         field: "year",
         headerName: "Year",
         width: 100,

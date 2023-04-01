@@ -75,6 +75,9 @@ const StudentSchema = new mongoose.Schema(
       type: Boolean,
       default: false
     },
+    classCode: {
+      type: String
+    },
     courses: [
       {
         type: mongoose.Schema.Types.ObjectId,

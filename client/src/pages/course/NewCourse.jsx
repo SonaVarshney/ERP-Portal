@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
 import { departments, semesters } from "../../source/formsource/arrays";
-import Navbar from "../../components/navbar/Navbar";
+import AdminNavbar from "../../components/adminNavbar/AdminNavbar";
 
 const NewCourse = ({ inputs, title }) => {
 
@@ -39,7 +39,7 @@ const NewCourse = ({ inputs, title }) => {
     <div className="new">
 
       <div className="newContainer">
-        <Navbar />
+        <AdminNavbar />
         
         <div className="top">
           <h1>{title}</h1>

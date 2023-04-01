@@ -1,7 +1,13 @@
 import Student from "../models/Student.js";
+import { semesters, departments } from "../utils/array.js";
 import bcrypt from "bcryptjs";
 import { createError } from "../utils/error.js";
 import jwt from "jsonwebtoken";
+
+function generateClassCode(semester, department) {
+  const index = departments.findIndex(d => d.code === department)
+  return `${departments[index].code}-${semester}`;
+}
 
 export const registerStudent = async (req, res, next) => {
   try {
@@ -10,6 +16,9 @@ export const registerStudent = async (req, res, next) => {
     if (em)
       return res.status(409).send({ message: "User with given email already exists" })
 
+    const semester = req.body.semester
+    const department = req.body.department
+    const code = generateClassCode(semester, department);
 
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(req.body.password, salt);
@@ -17,6 +26,7 @@ export const registerStudent = async (req, res, next) => {
     const newStudent = new Student({
       ...req.body,
       password: hash,
+      classCode: code
     });
 
     await newStudent.save();

@@ -77,6 +77,4 @@ const FacultySchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-
-
 export default mongoose.model("Faculty", FacultySchema);

@@ -58,6 +58,7 @@ import EditStudent from './pages/student/EditStudent';
 import EditFaculty from './pages/faculty/EditFaculty';
 import { courseColumns } from "./source/datatablesource/courseColumns";
 import { courseInputs } from "./source/formsource/courseInputs";
+import NewTimeTable from "./pages/timetable/NewTimeTable";
 
 
 function App() {
@@ -259,6 +260,32 @@ function App() {
                   </RequireAdmin>
                 </RequireAuth>
             }
+        />
+
+        {/* routes for timetable */}
+
+        {/*  create new timetable */}
+        
+        <Route 
+          path="/admin/timetables/new" element={
+            <RequireAdmin>
+              <RequireAuth>
+                <NewTimeTable title="Add New Time Table"/>
+              </RequireAuth>
+            </RequireAdmin>
+          }
+        />
+
+        {/* edit timetables */}
+
+        <Route 
+          path="/admin/timetables/:timetableId/edit" element={
+            <RequireAdmin>
+              <RequireAuth>
+                <EditCourse title="Edit Timetable" type="Admin"/>
+              </RequireAuth>
+            </RequireAdmin>
+          }
         />
 
         {/* routes for courses */}

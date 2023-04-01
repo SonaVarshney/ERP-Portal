@@ -16,6 +16,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
 import GroupIcon from '@mui/icons-material/Group';
 import BookIcon from '@mui/icons-material/Book';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import CollectionsBookmarkIcon from '@mui/icons-material/CollectionsBookmark';
 
 import { Link } from 'react-router-dom';
@@ -61,7 +62,7 @@ const AdminSidebar = ({ setOpen }) => {
 
                     {/* Options under Lists */}
 
-                    <p className="title">Lists</p>
+                    <p className="title">Information</p>
 
                     {/* Takes you to list of all registered students */}
                     <Link to="/admin/students" style={{ textDecoration: "none" }}>
@@ -131,6 +132,13 @@ const AdminSidebar = ({ setOpen }) => {
                         <li>
                             <BookIcon className="icon" />
                             <span>Courses</span>
+                        </li>
+                    </Link>
+
+                    <Link to="/admin/timetables/new" style={{ textDecoration: "none" }}>
+                        <li>
+                            <CalendarMonthIcon className="icon" />
+                            <span>Timetable</span>
                         </li>
                     </Link>
 
