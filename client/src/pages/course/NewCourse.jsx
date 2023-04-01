@@ -66,7 +66,7 @@ const NewCourse = ({ inputs, title }) => {
                     <option value={"-"}> </option>
                     {
                         departments.map((d) => (
-                        <option value={d.code} key={d.id}>{d.name}</option>
+                        <option value={d.name} key={d.id}>{d.name}</option>
                         ))
                     }
                 </select>

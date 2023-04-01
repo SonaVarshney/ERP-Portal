@@ -116,6 +116,11 @@ const Single = ({ type }) => {
             <EditIcon style={{ height: "20px", paddingRight: "10px", cursor: "pointer" }} onClick={() => navigate("edit")} />
             
           </div>
+
+          <div className="right">
+            <h1 className="title">Semester Registration</h1>
+            
+          </div>
         </div>
       </div>
     </div>

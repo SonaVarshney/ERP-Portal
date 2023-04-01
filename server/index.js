@@ -15,7 +15,7 @@ import updateRoute from "./routes/updates.js";
 import eventRoute from "./routes/events.js";
 import queryRoute from "./routes/queries.js";
 import courseRoute from "./routes/course.js";
-
+import timetableRoute from "./routes/timetable.js"
 
 //config and middlewares
 const app = express();
@@ -71,6 +71,8 @@ app.use("/api/updates", updateRoute);
 app.use("/api/events", eventRoute);
 app.use("/api/queries", queryRoute);
 app.use("/api/courses", courseRoute);
+app.use("/api/timetables", timetableRoute);
+
 
 
 //listen on port

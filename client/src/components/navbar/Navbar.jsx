@@ -100,12 +100,12 @@ const Navbar = () => {
               </li>
             ))}
 
-            {/* Takes to the page of all updates */}
+            {/* Takes to the page of all updates
             <Link to={user.isStudent && user.isCR? "/updates/cr" : "/updates"} style={{ textDecoration: "none" }}>
               <li id="more">
                 View all new updates
               </li>
-            </Link>
+            </Link> */}
           </ul>}
 
 

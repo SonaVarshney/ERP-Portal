@@ -25,7 +25,11 @@ const Home = ({ type }) => {
           </div>
         </div>
 
-        {/* widgets */}
+        <div className="buttons">
+          
+        </div>
+
+        {/* widgets
         <div className="widgets">
           <Widget type="ml" />
           <Widget type="oops" />
@@ -33,7 +37,7 @@ const Home = ({ type }) => {
           <Widget type="computernetwork" />
           <Widget type="operatingsystem" />
           <Widget type="systemdesign" />
-        </div>
+        </div> */}
 
         {/* Latest Updates */}
         <div className="AdminListContainer">

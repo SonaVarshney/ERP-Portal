@@ -26,7 +26,7 @@ const Single = ({ type }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="single">
+    <div className="singleFaculty">
 
       <div className="singleContainer">
         {(type === "Admin") ? (<AdminNavbar />) : (<Navbar />)}
@@ -122,6 +122,7 @@ const Single = ({ type }) => {
             <EditIcon style={{ height: "20px", paddingRight: "10px", cursor: "pointer" }} onClick={() => navigate("edit")} />
             
           </div>
+
         </div>
       </div>
     </div>

@@ -24,6 +24,7 @@ const EditFaculty = ({ title, type }) => {
 
   const { data } = useFetch(`/faculties/${id}`)
   const courses = useFetch('/courses').data;
+  const [deptCourse, setDeptCourse] = useState();
   const [info, setInfo] = useState({});
   const [file, setFile] = useState("");
   const [sending, setSending] = useState(false)
@@ -31,6 +32,10 @@ const EditFaculty = ({ title, type }) => {
   useEffect(() => {
     setInfo(data)
   }, [data])
+
+  useEffect(() => {
+    setDeptCourse(courses.filter((c) => data.department === c.department))
+  })
 
 
   const navigate = useNavigate();
@@ -253,7 +258,7 @@ const EditFaculty = ({ title, type }) => {
                   value={info.subject}
                 >
                   {
-                    courses.map((course) => (
+                    deptCourse.map((course) => (
                       <option value={course._id}>{course.name}</option>
                     ))
                   }
