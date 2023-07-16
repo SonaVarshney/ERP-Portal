@@ -24,10 +24,11 @@ const EditFaculty = ({ title, type }) => {
 
   const { data } = useFetch(`/faculties/${id}`)
   const courses = useFetch('/courses').data;
-  const [deptCourse, setDeptCourse] = useState();
+  const [deptCourse, setDeptCourse] = useState([]);
   const [info, setInfo] = useState({});
   const [file, setFile] = useState("");
   const [sending, setSending] = useState(false)
+  const [classCode, setClasscode] = useState("");
 
   useEffect(() => {
     setInfo(data)
@@ -62,7 +63,7 @@ const EditFaculty = ({ title, type }) => {
         const { url } = uploadRes.data;
         const { public_id } = uploadRes.data;
         const newuser = {
-          ...info, profilePicture: url, cloud_id: public_id
+          ...info, profilePicture: url, cloud_id: public_id, classCode: classCode
         }
 
         axios.put(`http://localhost:5500/api/faculties/${id}`, newuser, {
@@ -218,7 +219,7 @@ const EditFaculty = ({ title, type }) => {
                 >
                   {
                     departments.map((d) => (
-                      <option value={d.code} key={d._id}>{d.name}</option>
+                      <option value={d.name} key={d._id}>{d.name}</option>
                     ))
                   }
                 </select>
@@ -259,7 +260,7 @@ const EditFaculty = ({ title, type }) => {
                 >
                   {
                     deptCourse.map((course) => (
-                      <option value={course._id}>{course.name}</option>
+                      <option value={course._id} onClick={() => setClasscode(course.classCode)}>{course.name}</option>
                     ))
                   }
                   <option value={"none"}>none</option>

@@ -5,7 +5,9 @@ import "../../style/form.scss";
 import DriveFolderUploadIcon from '@mui/icons-material/DriveFolderUpload';
 
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import useFetch from "../../hooks/useFetch";
+
 
 import axios from "axios"
 
@@ -16,10 +18,19 @@ const NewFaculty = ({ inputs, title }) => {
   
   const [file, setFile] = useState("");
   const [info, setInfo] = useState({});
+  const [classCode, setClasscode] = useState("");
   const navigate = useNavigate();
   const handleChange = (e) => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   }
+
+  const courses = useFetch('/courses').data;
+  const [deptCourse, setDeptCourse] = useState();
+
+  useEffect(() => {
+    setDeptCourse(courses.filter((c) => info.department === c.department))
+  })
+
 
   const handleClick = async (e) => {
     e.preventDefault();
@@ -40,7 +51,7 @@ const NewFaculty = ({ inputs, title }) => {
         const { url } = uploadRes.data;
         const { public_id } = uploadRes.data;
         const newuser = {
-          ...info, profilePicture: url, cloud_id: public_id
+          ...info, profilePicture: url, cloud_id: public_id, classCode: classCode
         }
 
         axios.post("http://localhost:5500/api/faculties/registerFaculty", newuser, {
@@ -150,11 +161,27 @@ const NewFaculty = ({ inputs, title }) => {
                   <option value={"-"}> </option>
                   {
                     departments.map((d) => (
-                      <option value={d.code} key={d.id}>{d.name}</option>
+                      <option value={d.name} key={d.id}>{d.name}</option>
                     ))
                   }
                 </select>
               </div>
+
+              {info.department && <div className="formInput">
+                <label>Course Taught</label>
+                <select
+                  id="subject"
+                  onChange={handleChange}
+                >
+                  {
+                    deptCourse.map((course) => (
+                      <option value={course._id} onClick={() => setClasscode(course.classCode)}>{course.name}</option>
+                    ))
+                  }
+                  <option value={"none"}>none</option>
+                  
+                </select>
+              </div>}
 
             </form>
             <div className="submitButton">

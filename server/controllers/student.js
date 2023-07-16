@@ -5,7 +5,7 @@ import { createError } from "../utils/error.js";
 import jwt from "jsonwebtoken";
 
 function generateClassCode(semester, department) {
-  const index = departments.findIndex(d => d.code === department)
+  const index = departments.findIndex(d => d.name === department)
   return `${departments[index].code}-${semester}`;
 }
 
@@ -69,9 +69,14 @@ export const loginStudent = async (req, res, next) => {
 
 export const updateStudent = async (req, res, next) => {
   try {
+
+    const semester = req.body.semester
+    const department = req.body.department
+    const code = generateClassCode(semester, department);
+
     const updatedStudent = await Student.findByIdAndUpdate(
       req.params.id,
-      { $set: req.body },
+      { $set: {...req.body, classCode: code} },
       { new: true }
     );
     res.status(200).json(updatedStudent);

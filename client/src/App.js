@@ -19,6 +19,7 @@ import { facultyColumns } from "./source/datatablesource/facultyColumns";
 import { taskColumns } from "./source/datatablesource/taskColumns";
 import { updateColumns } from "./source/datatablesource/updateColumns";
 import { queryColumns } from "./source/datatablesource/queryColumns";
+import { courseColumns } from "./source/datatablesource/courseColumns";
 
 
 // Form Inputs
@@ -27,7 +28,7 @@ import { taskInputs } from "./source/formsource/taskInputs"
 import { facultyInputs } from "./source/formsource/facultyInputs"
 import { updateInputs } from "./source/formsource/updateInputs"
 import { eventInputs } from './source/formsource/eventInputs';
-
+import { courseInputs } from "./source/formsource/courseInputs";
 
 // Admin Pages
 import NewStudent from "./pages/student/NewStudent";
@@ -45,7 +46,8 @@ import NewEvent from './pages/event/NewEvent';
 import Events from './pages/event/Events';
 import EditEvent from './pages/event/EditEvent';
 import Response from './pages/response/Response';
-
+import NewTest from "./pages/test/NewTest";
+import EditTest from "./pages/test/EditTest";
 
 // Common Pages
 import Home from "./pages/home/Home";
@@ -56,8 +58,6 @@ import List from "./pages/list/List"
 import Landing from "./pages/Landing/Landing";
 import EditStudent from './pages/student/EditStudent';
 import EditFaculty from './pages/faculty/EditFaculty';
-import { courseColumns } from "./source/datatablesource/courseColumns";
-import { courseInputs } from "./source/formsource/courseInputs";
 import NewTimeTable from "./pages/timetable/NewTimeTable";
 
 
@@ -213,7 +213,7 @@ function App() {
             </RequireAuth>
         } />
 
-        {/* edit page for student */}
+        {/* edit page for faculty */}
         <Route path="/admin/faculties/:facultyId/edit" element={
           <RequireAuth>
             <RequireAdmin>
@@ -476,6 +476,36 @@ function App() {
               </RequireAuth>
             }
         />
+
+        {/* routes for tests faculty side */}
+
+        {/* list of tests */}
+        {/* <Route path="/tests/cr" element={
+            <RequireAuth>
+              <RequireFaculty>
+                <List column={testColumns} name="Test" type="Creator" />
+              </RequireFaculty>
+            </RequireAuth>
+        } /> */}
+
+        {/* edit page for tests */}
+        <Route path="/tests/:testId/edit" element={
+            <RequireAuth>
+              <RequireFaculty>
+                <EditTest title="Update Test" />
+              </RequireFaculty>
+            </RequireAuth>
+        } />
+
+        {/* create test page */}
+        <Route path="/tests/new" element={
+            <RequireAuth>
+              <RequireFaculty>
+                <NewTest title="Add New Test" />
+              </RequireFaculty>
+            </RequireAuth>
+        } />
+
 
         {/* events */}
         <Route path="/events" element={

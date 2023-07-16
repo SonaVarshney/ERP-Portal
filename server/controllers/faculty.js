@@ -1,6 +1,5 @@
 import Faculty from "../models/Faculty.js";
 import bcrypt from "bcryptjs";
-import { semesters, departments } from "../utils/array.js";
 import { createError } from "../utils/error.js";
 import jwt from "jsonwebtoken";
 

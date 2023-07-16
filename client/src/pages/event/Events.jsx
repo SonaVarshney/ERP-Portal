@@ -25,6 +25,7 @@ const localizer = dateFnsLocalizer({
 
 const Events = () => {
     const tasks = useFetch("/tasks").data
+    const tests = useFetch("/tests").data
     const [events, setEvents] = useState([]);
     const [clickedEvent, setClickedEvent] = useState({});
     const [openModal, setOpenModal] = useState(false);
@@ -38,14 +39,19 @@ const Events = () => {
         //     return { title: d.name, start: startDate, end: endDate};
         // })
 
-        const e = tasks.map((t) => {
+        const e1 = tasks.map((t) => {
             const deadline = new Date(t.deadline)
-            console.log(deadline)
-            return {title: t.title, start:deadline, end: deadline}
+            return {title: t.title, start:deadline}
         })
-        setEvents(e);
-    }, [tasks])
 
+        const e2 = tests.map((t) => {
+            const date = new Date(t.date)
+            return {title: `${t.author} Test`, start: date}
+        })
+        setEvents([...e1, ...e2]);
+    }, [tasks, tests])
+
+    console.log(events)
     const handleEventPopup = (e) => {
         if (e.target.className === "rbc-event-content") {
             const event = tasks.filter((item) => { return item["title"] === e.target.title }

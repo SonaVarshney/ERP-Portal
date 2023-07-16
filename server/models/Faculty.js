@@ -72,6 +72,9 @@ const FacultySchema = new mongoose.Schema(
     subject: { 
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Course'
+    },
+    classCode: {
+      type: String
     }
   },
   { timestamps: true }

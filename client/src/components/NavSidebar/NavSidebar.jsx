@@ -16,7 +16,7 @@ import AddTaskIcon from '@mui/icons-material/AddTask';
 import NotificationAddIcon from '@mui/icons-material/NotificationAdd';
 import MarkChatReadIcon from '@mui/icons-material/MarkChatRead';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-
+import NoteAddIcon from '@mui/icons-material/NoteAdd';
 
 
 import { useContext } from "react";
@@ -94,6 +94,13 @@ const NavSidebar = ({ setOpen }) => {
                         <li>
                             <AddTaskIcon className="icon" />
                             <span>Tasks</span>
+                        </li>
+                    </Link>}
+
+                    {(user.isFaculty) && <Link to="/tests/new" style={{ textDecoration: "none" }}>
+                        <li>
+                            <NoteAddIcon className="icon" />
+                            <span>Tests</span>
                         </li>
                     </Link>}
 

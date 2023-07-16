@@ -23,9 +23,14 @@ export const createCourse = async (req, res, next) => {
 
 export const updateCourse = async (req, res, next) => {
   try {
+    
+    const department = req.body.department;
+    const semester = req.body.semester;
+    const code = generateClassCode(semester, department)
+    
     const course = await Course.findByIdAndUpdate(
       req.params.id,
-      { $set: req.body },
+      { $set: {...req.body, classCode: code }},
       { new: true }
     );
     res.status(200).json(course);
